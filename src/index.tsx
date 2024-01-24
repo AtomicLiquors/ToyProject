@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
-import theme from './styles/theme.js'
+import theme from './styles/theme.ts'
+//import media from './styles/media.ts'
 
 import App from './App.tsx';
 
-const rootNode = document.getElementById('root');
+const rootNode: HTMLElement = document.getElementById('root')!;
 
 ReactDOM.createRoot(rootNode).render(
     <React.StrictMode>
