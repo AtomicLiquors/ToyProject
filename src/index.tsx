@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme.ts'
-//import media from './styles/media.ts'
 
 import App from './App.tsx';
 

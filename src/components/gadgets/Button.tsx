@@ -1,14 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button: React.FC = () => {
+interface ButtonProps {
+  text: string; 
+  $stretch?: boolean;
+}
+
+const Button: React.FC<ButtonProps> = ({text, $stretch}) => {
   return (
-    <S.Button type="button">등록</S.Button>
+    <S.Button type="button" $stretch={$stretch}>{text}</S.Button>
   );
 };
 
 const S = {
-    Button: styled.button`
+    Button: styled.button<{ $stretch?: boolean}>`
+        width: ${(props) => (props.$stretch ? '100%' : 'auto')};
         margin: 0;
         padding: 0.5em;
         border-radius: 5px;
