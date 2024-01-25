@@ -1,20 +1,29 @@
+import { useRef, useEffect } from 'react';
 import { Flex } from "@/styles/container";
 import styled from "styled-components";
+import { ModalManager } from "@/manager/ModalManager.ts";
 
-const Modal: React.FC = () => {
+
+const Modal: React.FC<ModalManager> = ({isOpen: open, close}) => {
+
+  const modalBackground = useRef<HTMLDivElement>(null);
+
+  useEffect(()=> {
+    modalBackground.current!.style.display = ( open ? 'flex' : 'none' );
+  }, [open])
+  
   return (
-    <S.ModalContainer $center $column>
-        <S.ModalContent>
-          <span>&times;</span>
-          <p>Some text in the Modal..</p>
-        </S.ModalContent>
-    </S.ModalContainer>
+    <S.ModalBackground ref={modalBackground} $center $column>
+      <S.ModalContent>
+        <span onClick={close}>&times;</span>
+        <p>Some text in the Modal..</p>
+      </S.ModalContent>
+    </S.ModalBackground>
   );
 };
 
 const S = {
-  ModalContainer: styled(Flex)`
-    display: none;
+  ModalBackground: styled(Flex)`
     position: fixed;
     z-index: 1;
     left: 0;

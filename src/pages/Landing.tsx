@@ -1,23 +1,24 @@
 import Button from "@/components/gadgets/Button";
 import Input from "@/components/gadgets/Input";
 import styled from "styled-components";
-
 import { Flex } from "@/styles/container";
 import Modal from "@/components/layout/Modal";
+import modalManager from "@/manager/ModalManager.ts";
 
 const Landing: React.FC = () => {
+
+  const { isOpen, open, close } = modalManager();
+
   return (
-    <S.Container>
-      <Modal/>
+    <S.Container $column $center>
+      <Modal isOpen={isOpen} close={close}/>
       <h1>Temp Logo</h1>
       <Flex $column $center>
-        <p>소개 페이지 문구입니다.</p>
-        <p>다람쥐 헌 쳇바퀴에 타고파.</p>
-        <p>다람쥐 헌 쳇바퀴에 타고파.</p>
+        <p>소개 페이지 문구입니다.<br/>다람쥐 헌 쳇바퀴에 타고파.<br/>다람쥐 헌 쳇바퀴에 타고파.</p>
       </Flex>
       <Input $stretch/>
       <Input $stretch/>
-      <Button text={"로그인"} $stretch />
+      <Button onClick={open} text={"로그인"} $stretch />
       <hr />
       <Flex $column $center>
         <p>계정이 없으신가요?</p>
@@ -28,15 +29,10 @@ const Landing: React.FC = () => {
 };
 
 const S = {
-  Container: styled.div`
+  Container: styled(Flex)`
     padding-left: 20px;
     padding-right: 20px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   `,
-  // To-Do: 아래 3개는 flex로 대체 가능 : 여백을 함께 주려면 어떻게 할지 구상 바람.
 };
 
 export default Landing;

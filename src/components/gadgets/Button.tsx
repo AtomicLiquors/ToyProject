@@ -4,11 +4,12 @@ import styled from "styled-components";
 interface ButtonProps {
   text: string; 
   $stretch?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button: React.FC<ButtonProps> = ({text, $stretch}) => {
+const Button: React.FC<ButtonProps> = ({text, $stretch, onClick}) => {
   return (
-    <S.Button type="button" $stretch={$stretch}>{text}</S.Button>
+    <S.Button onClick={onClick} type="button" $stretch={$stretch}>{text}</S.Button>
   );
 };
 

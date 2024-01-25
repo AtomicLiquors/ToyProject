@@ -18,6 +18,7 @@ export const Flex = styled.div<FlexProps>`
     css`
       justify-content: center;
       align-items: center;
+      text-align: center;
     `}
   ${({ $column }) =>
     $column &&
