@@ -1,40 +1,51 @@
 import React from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "@/App.css";
+import "@/Transition.css";
+import { Routes, Route, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Landing from "@/pages/Landing";
 import NotFound from "@/pages/NotFound";
 import Feed from "@/pages/Feed";
+import Join from "@/pages/Join";
 import Navbar from "@/components/layout/Navbar";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const App: React.FC = () => {
+  const location = useLocation();
+
   return (
-    <S.AppContainer className="main-container">
-      <S.WidthFrame>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />}></Route>
-          <Route path="/*" element={<NotFound />}></Route>
-          <Route path="/feed" element={<Feed />}></Route>
-        </Routes>
-      </BrowserRouter>
-      <Navbar/>
-      </S.WidthFrame>
+    /* location.pathname==="/postwrite"?location.pathname:null */
+
+    <S.AppContainer>
+      <S.ScreenContainer>
+        <TransitionGroup className="transition-group">
+          <CSSTransition
+            key={location.pathname}
+            timeout={500}
+            classNames="slide"
+          >
+            <Routes location={location}>
+              <Route path="/" element={<Landing />} />
+              <Route path="/feed" element={<Feed />} />
+              <Route path="/join" element={<Join />} />
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </CSSTransition>
+        </TransitionGroup>
+      </S.ScreenContainer>
+      <Navbar />
     </S.AppContainer>
   );
 };
 
 const S = {
-  AppContainer: styled.div`
+  AppContainer: styled.div``,
+
+  ScreenContainer: styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    justify-content: center;
   `,
-
-  WidthFrame: styled.div`
-    width: 500px;
-  `
-}
-        
+};
 
 export default App;

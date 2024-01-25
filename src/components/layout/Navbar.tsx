@@ -16,6 +16,9 @@ const Navbar:React.FC = () => {
 
 const S = {
     Container: styled.div`
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
         width: 100%;
         display: flex;
         justify-content: space-around;

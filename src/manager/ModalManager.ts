@@ -7,7 +7,7 @@ export interface ModalManager {
 }
 
 export default function modalManager(): ModalManager {
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
   return {
     isOpen,
     open() {
