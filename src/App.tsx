@@ -11,6 +11,7 @@ import Navbar from "@/components/layout/Navbar";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Paths from "@/consts/paths";
 import JoinInfo from "@/pages/JoinInfo";
+import JoinProfileMessage from "./pages/JoinProfileMessage";
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -22,18 +23,17 @@ const App: React.FC = () => {
       <S.ScreenContainer>
         <TransitionGroup className="transition-group" >
           <CSSTransition
-          
             key={location.pathname}
-            timeout={10000}
+            timeout={500}
             classNames="slide"
-            
           >
             <Routes location={location} >
               <Route path="/" element={<Landing />} />
-              <Route path={Paths.FEED} element={<Feed />} />
               <Route path={Paths.JOIN} element={<Join />} />
               <Route path={Paths.JOININFO} element={<JoinInfo />} />
+              <Route path={Paths.JOINPROFILEMESSAGE} element={<JoinProfileMessage />} />
               <Route path="/*" element={<NotFound />} />
+              <Route path={Paths.FEED} element={<Feed />} />
             </Routes>
           </CSSTransition>
         </TransitionGroup>
@@ -45,7 +45,6 @@ const App: React.FC = () => {
 
 const S = {
   AppContainer: styled.div`
-    
   `,
 
   ScreenContainer: styled.div`

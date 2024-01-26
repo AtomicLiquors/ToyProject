@@ -10,7 +10,6 @@ const Profile: React.FC = () => {
   return (
     <S.Container $column $center>
       <Modal isOpen={isOpen} close={close}/>
-      
     </S.Container>
   );
 };

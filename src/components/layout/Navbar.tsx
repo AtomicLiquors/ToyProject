@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 import {outlinedIcons} from '@/styles/icons'
-
+import { Link } from "react-router-dom";
+import Paths from "@/consts/paths";
 
 const Navbar:React.FC = () => {
     return (
         <S.Container>
-            <img src = {outlinedIcons.home} width={32}/>
-            <img src = {outlinedIcons.search} width={32}/>
+            <Link to={Paths.FEED}>
+                <img src = {outlinedIcons.home} width={32}/>
+            </Link>
+            
+            <Link to={Paths.FEED}>
+                <img src = {outlinedIcons.search} width={32}/>
+            </Link>
             <img src = {outlinedIcons.add} width={32}/>
             <img src = {outlinedIcons.home} width={32}/>
             <img src = {outlinedIcons.user} width={32}/>
