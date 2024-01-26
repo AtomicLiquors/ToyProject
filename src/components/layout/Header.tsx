@@ -1,18 +1,16 @@
-import {outlinedIcons} from '@/styles/icons'
-import { Flex } from '@/styles/container';
+import { Flex } from "@/styles/container";
+import { Link } from "react-router-dom";
 
-
-const Header:React.FC = () => {
-    return (
-        <Flex $spaceAround>
-            <img src = {outlinedIcons.home} width={32}/>
-            <img src = {outlinedIcons.search} width={32}/>
-            <img src = {outlinedIcons.add} width={32}/>
-            <img src = {outlinedIcons.home} width={32}/>
-            <img src = {outlinedIcons.user} width={32}/>
-        </Flex>
-    );
+interface HeaderProps {
+  backlink?: string;
 }
 
+const Header: React.FC<HeaderProps> = ({ backlink='/' }) => {
+  return (
+    <Flex $flxStart style={{position: 'absolute', top:0}}>
+      {backlink ? <Link to={backlink}>Back</Link> : <></>}
+    </Flex>
+  );
+};
 
 export default Header;

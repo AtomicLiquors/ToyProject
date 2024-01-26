@@ -6,6 +6,7 @@ interface FlexProps {
   $column?: boolean;
   $spaceBetween?: boolean;
   $spaceAround?: boolean;
+  $flxStart?: boolean;
   $flxEnd?: boolean;
   $gap?: string;
   children: ReactNode;
@@ -35,6 +36,12 @@ export const Flex = styled.div<FlexProps>`
     $spaceAround &&
     css`
       justify-content: space-between;
+      align-items: center;
+    `}
+    ${({ $flxStart }) =>
+    $flxStart &&
+    css`
+      justify-content: flex-start;
       align-items: center;
     `}
     ${({ $flxEnd }) =>

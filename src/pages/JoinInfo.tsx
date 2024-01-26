@@ -1,28 +1,36 @@
-import Button from "@/components/gadgets/Button";
+
 import styled from "styled-components";
 import { Flex } from "@/styles/container";
 import Modal from "@/components/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
 import Header from "@/components/layout/Header";
-import { useNavigate } from "react-router-dom";
+import Input from "@/components/gadgets/Input";
 import Paths from "@/consts/paths";
+import ProfileImg from "@/components/ProfileImg";
 
-const Join: React.FC = () => {
-  const navigate = useNavigate();
-  const { isOpen, open, close } = modalManager();
+
+const JoinInfo: React.FC = () => {
+
+  const { isOpen, close } = modalManager();
 
   return (
     <S.Container $column $center>
     
       <Modal isOpen={isOpen} close={close}/>
-      <Header backlink={Paths.LANDING}/>
+      <Header backlink={Paths.JOIN}/>
       <h1>Temp Logo</h1>
-      <Flex $column $center>
-        <p>소셜 로그인을 통해 인증해주세요.</p>
-      </Flex>
       
-      <Button onClick={open} text={"SNS 계정으로 회원가입"} stretch />
-      <Button onClick={() => navigate(Paths.JOININFO)}text={"인증완료"} stretch />
+      <ProfileImg/>
+      
+      <Flex $column $center>
+        <p>환영합니다, 누구누구님.</p>
+      </Flex>
+      <div>닉네임</div>
+      <Input $stretch/>
+      <div>생년월일</div>
+      <Input $stretch/>
+      <div>성별</div>
+      <Input $stretch/>
     </S.Container>
   );
 };
@@ -38,4 +46,4 @@ const S = {
   `,
 };
 
-export default Join;
+export default JoinInfo;

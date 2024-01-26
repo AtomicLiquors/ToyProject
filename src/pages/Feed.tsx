@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Flex } from "@/styles/container";
 import { Link } from "react-router-dom";
+import Paths from "@/consts/paths";
 
 const feedItems = [
   {
@@ -14,7 +15,7 @@ const feedItems = [
 const Feed: React.FC = () => {
   return (
     <S.Container $center $column>
-      <Link to={"/"}>ㅗㅗㅗ</Link>
+      <Link to={Paths.LANDING}>Back</Link>
       {feedItems ? (
         feedItems.map((feed, feedId) => (
           <div key={feedId} style={{ width: "100%" }}>

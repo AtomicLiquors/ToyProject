@@ -9,6 +9,8 @@ import Feed from "@/pages/Feed";
 import Join from "@/pages/Join";
 import Navbar from "@/components/layout/Navbar";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Paths from "@/consts/paths";
+import JoinInfo from "@/pages/JoinInfo";
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -18,16 +20,19 @@ const App: React.FC = () => {
 
     <S.AppContainer>
       <S.ScreenContainer>
-        <TransitionGroup className="transition-group">
+        <TransitionGroup className="transition-group" >
           <CSSTransition
+          
             key={location.pathname}
-            timeout={500}
+            timeout={10000}
             classNames="slide"
+            
           >
-            <Routes location={location}>
+            <Routes location={location} >
               <Route path="/" element={<Landing />} />
-              <Route path="/feed" element={<Feed />} />
-              <Route path="/join" element={<Join />} />
+              <Route path={Paths.FEED} element={<Feed />} />
+              <Route path={Paths.JOIN} element={<Join />} />
+              <Route path={Paths.JOININFO} element={<JoinInfo />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </CSSTransition>
@@ -39,7 +44,9 @@ const App: React.FC = () => {
 };
 
 const S = {
-  AppContainer: styled.div``,
+  AppContainer: styled.div`
+    
+  `,
 
   ScreenContainer: styled.div`
     display: flex;

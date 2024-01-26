@@ -17,6 +17,8 @@ const Navbar:React.FC = () => {
 const S = {
     Container: styled.div`
         position: absolute;
+        background: white;
+        padding: 10px 0 10px 0;
         z-index: 1;
         bottom: 0;
         width: 100%;

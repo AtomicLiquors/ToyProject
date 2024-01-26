@@ -1,10 +1,10 @@
 import Button from "@/components/gadgets/Button";
-import Input from "@/components/gadgets/Input";
 import styled from "styled-components";
 import { Flex } from "@/styles/container";
 import Modal from "@/components/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
 import { Link } from "react-router-dom";
+import Paths from "@/consts/paths";
 
 const Landing: React.FC = () => {
   const { isOpen, open, close } = modalManager();
@@ -22,16 +22,12 @@ const Landing: React.FC = () => {
           다람쥐 헌 쳇바퀴에 타고파.
         </p>
       </Flex>
-      <Input $stretch />
-      <Input $stretch />
-      <Link to={"/feed"}>
-        <Button text={"move"} $stretch />
-      </Link>
-      <Button onClick={open} text={"로그인"} $stretch />
+      
+      <Button onClick={open} text={"SNS 계정으로 로그인"} stretch />
       <hr />
       <Flex $column $center>
         <p>계정이 없으신가요?</p>
-        <Link to={"/feed"}>회원가입</Link>
+        <Link to={Paths.JOIN}>회원가입</Link>
       </Flex>
     </S.Container>
   );
@@ -39,6 +35,7 @@ const Landing: React.FC = () => {
 
 const S = {
   Container: styled(Flex)`
+  
     background: white;
     height: 100%;
     width: 100%;
