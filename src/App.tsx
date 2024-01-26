@@ -11,7 +11,9 @@ import Navbar from "@/components/layout/Navbar";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Paths from "@/consts/paths";
 import JoinInfo from "@/pages/JoinInfo";
-import JoinProfileMessage from "./pages/JoinProfileMessage";
+import JoinProfileMessage from "@/pages/JoinProfileMessage";
+import Profile from "@/pages/Profile";
+import Search from "@/pages/Search";
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -34,6 +36,8 @@ const App: React.FC = () => {
               <Route path={Paths.JOINPROFILEMESSAGE} element={<JoinProfileMessage />} />
               <Route path="/*" element={<NotFound />} />
               <Route path={Paths.FEED} element={<Feed />} />
+              <Route path={Paths.PROFILE} element={<Profile />} />
+              <Route path={Paths.SEARCH} element={<Search />} />              
             </Routes>
           </CSSTransition>
         </TransitionGroup>

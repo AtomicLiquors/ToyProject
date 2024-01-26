@@ -23,7 +23,8 @@ const JoinProfileMessage: React.FC = () => {
       <Header backlink={Paths.JOININFO}/>
       <h1>Temp Logo</h1>
       
-      <ProfileImg/>
+      
+      <ProfileImg width={32}/>
       
       <Flex $column $center>
         <p>프로필 메시지를 작성해 보세요! (선택)</p>
@@ -41,6 +42,7 @@ const S = {
   Container: styled(Flex)`
     box-sizing: border-box; 
     padding: 2em;
+    
     position: absolute;
     background: white;
     height: 100%;

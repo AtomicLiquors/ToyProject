@@ -2,10 +2,14 @@ import {outlinedIcons} from '@/styles/icons'
 import { profileColorGenerator } from '@/util/colorGenerator';
 // width, img src
 
-const Profile: React.FC = () => {
+interface ImgProps {
+    width: number;
+}
+
+const ProfileImg: React.FC<ImgProps> = ({width}) => {
     return (
-        <img src={outlinedIcons.user} width={64} style={{borderRadius: '100%', background: profileColorGenerator('sdfsfdstring')}}/>
+        <img src={outlinedIcons.user} width={width} style={{borderRadius: '100%', background: profileColorGenerator('sdfsfdstring')}}/>
     )
 }
 
-export default Profile;
+export default ProfileImg;

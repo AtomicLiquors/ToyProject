@@ -18,7 +18,7 @@ const JoinInfo: React.FC = () => {
       <Modal isOpen={isOpen} close={close} />
       <Header backlink={Paths.JOIN} />
       <h1>Temp Logo</h1>
-      <ProfileImg />
+       <ProfileImg width={32}/>
       
       <S.Block $column $center style={{borderTop: '1px solid #ccc'}}>
         <Flex $column $center>

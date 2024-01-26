@@ -6,6 +6,8 @@ interface FlexProps {
   $column?: boolean;
   $spaceBetween?: boolean;
   $spaceAround?: boolean;
+  $alignStart?: boolean;
+  $alignCenter?: boolean;
   $flxStart?: boolean;
   $flxEnd?: boolean;
   $gap?: string;
@@ -54,5 +56,18 @@ export const Flex = styled.div<FlexProps>`
     $gap &&
     css`
       gap: ${$gap};
+    `}
+    ${({ $alignStart }) =>
+    $alignStart &&
+    css`
+      justify-content: center;
+      align-items: start;
+      text-align: left;
+    `}
+
+    ${({ $alignCenter }) =>
+    $alignCenter &&
+    css`
+      align-items: center;
     `}
 `;

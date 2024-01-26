@@ -9,13 +9,15 @@ const Navbar:React.FC = () => {
             <Link to={Paths.FEED}>
                 <img src = {outlinedIcons.home} width={32}/>
             </Link>
-            
-            <Link to={Paths.FEED}>
+            <Link to={Paths.SEARCH}>
                 <img src = {outlinedIcons.search} width={32}/>
             </Link>
-            <img src = {outlinedIcons.add} width={32}/>
-            <img src = {outlinedIcons.home} width={32}/>
-            <img src = {outlinedIcons.user} width={32}/>
+            <Link to={Paths.FEED}>
+            <img src = {outlinedIcons.add} width={32}/></Link>
+            <Link to={Paths.FEED}>
+            <img src = {outlinedIcons.home} width={32}/></Link>
+            <Link to={Paths.PROFILE}>
+            <img src = {outlinedIcons.user} width={32}/></Link>
         </S.Container>
     );
 }
