@@ -1,3 +1,4 @@
+import { Palette } from "@/styles/palette";
 import React from "react";
 import styled from "styled-components";
 
@@ -22,12 +23,12 @@ type OptionRequirements = {
 
 const $themes: OptionRequirements = {
   blue : {
-    background: '#3796ee',
-    color: '#e4ffff',
+    background: Palette.BLUE,
+    color: Palette.TEXT_IN_BLUE,
     border: 'none',
   },
   white: {
-    background: 'white',
+    background: Palette.WHITE,
     color: 'black',
     border: '1px solid #ccc',
   }

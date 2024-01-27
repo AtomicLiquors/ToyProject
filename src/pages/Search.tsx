@@ -4,15 +4,18 @@ import Input from "@/components/gadgets/Input";
 
 const Search = () => {
   return (
-    <S.Div>
+    <S.Container>
       <Input placeholder="🔎"/>
       <Gallery />
-    </S.Div>
+    </S.Container>
   );
 };
 
 const S = {
-  Div: styled.div`
+  Container: styled.div`
+    width: 100%;
+    height: 100%;
+    position: absolute;
     background: white;
   `,
 };

@@ -3,18 +3,18 @@ import {outlinedIcons} from '@/styles/icons'
 import { Link } from "react-router-dom";
 import Paths from "@/consts/paths";
 
-const Navbar:React.FC = () => {
+const Navbar:React.FC<{height: number}> = ({height}) => {
     return (
-        <S.Container>
+        <S.Container style={{height: height}}>
             <Link to={Paths.FEED}>
                 <img src = {outlinedIcons.home} width={32}/>
             </Link>
             <Link to={Paths.SEARCH}>
                 <img src = {outlinedIcons.search} width={32}/>
             </Link>
-            <Link to={Paths.FEED}>
+            <Link to={Paths.NEWPOST}>
             <img src = {outlinedIcons.add} width={32}/></Link>
-            <Link to={Paths.FEED}>
+            <Link to={Paths.NOTIFICATIONS}>
             <img src = {outlinedIcons.home} width={32}/></Link>
             <Link to={Paths.PROFILE}>
             <img src = {outlinedIcons.user} width={32}/></Link>

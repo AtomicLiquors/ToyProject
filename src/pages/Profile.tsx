@@ -5,6 +5,8 @@ import ProfileImg from "@/components/ProfileImg";
 import modalManager from "@/manager/ModalManager.ts";
 import Button, { ButtonThemeOption } from "@/components/gadgets/Button";
 import Gallery from "@/components/Gallery";
+import { Link } from "react-router-dom";
+import Paths from "@/consts/paths";
 
 const Profile: React.FC = () => {
   const { isOpen, close } = modalManager();
@@ -32,7 +34,9 @@ const Profile: React.FC = () => {
         <S.ProfileMessages $column $alignStart>
           <b>Jacob West</b><br/>
           다람쥐 헌 쳇바퀴에 타고파. 다람쥐 헌 쳇바퀴에 타고파. 다람쥐 헌 쳇바퀴에 타고파. 다람쥐 헌 쳇바퀴에 타고파.
-          <Button text={'프로필 편집'} theme={ButtonThemeOption.WHITE} stretch/>
+          <Link to={Paths.PROFILEEDIT}>
+            <Button text={'프로필 편집'} theme={ButtonThemeOption.WHITE} stretch/>
+          </Link>
         </S.ProfileMessages>
       </S.ProfileContianer>
       <div style={{overflow: 'scroll'}}>
@@ -57,6 +61,7 @@ const S = {
   `,
 
   ProfileImgAndNumerics: styled(Flex)`
+    box-sizing: border-box; 
     padding: 1em;
     width: 100%;
   `,

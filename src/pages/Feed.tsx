@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Flex } from "@/styles/container";
 import ProfileImg from "@/components/ProfileImg";
-import Header from "@/components/layout/Header";
+import Header, { marginTop } from "@/components/layout/Header";
 
 const feedItems = [
   {
@@ -23,7 +23,7 @@ const Feed: React.FC = () => {
   return (
     <S.Container $center $column style={{overflow: 'hidden'}}>
       <Header/>
-      <Flex style={{ padding: '5px', overflow: "scroll", gap: "25px", minHeight: "32px" }}>
+      <Flex style={{ padding: '5px', overflow: "scroll", gap: "25px", minHeight: "32px", marginTop: marginTop }}>
         <ProfileImg width={32} />
         <ProfileImg width={32} />
         <ProfileImg width={32} />

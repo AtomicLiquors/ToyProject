@@ -14,6 +14,12 @@ import JoinInfo from "@/pages/JoinInfo";
 import JoinProfileMessage from "@/pages/JoinProfileMessage";
 import Profile from "@/pages/Profile";
 import Search from "@/pages/Search";
+import NewPost from "./pages/NewPost";
+import ProfileEdit from "./pages/ProfileEdit";
+import Notifications from "./pages/Notifications";
+
+
+const $margin: number = 32;
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -36,13 +42,16 @@ const App: React.FC = () => {
               <Route path={Paths.JOINPROFILEMESSAGE} element={<JoinProfileMessage />} />
               <Route path="/*" element={<NotFound />} />
               <Route path={Paths.FEED} element={<Feed />} />
+              <Route path={Paths.NEWPOST} element={<NewPost />} />
+              <Route path={Paths.NOTIFICATIONS} element={<Notifications />} />
               <Route path={Paths.PROFILE} element={<Profile />} />
+              <Route path={Paths.PROFILEEDIT} element={<ProfileEdit />} />
               <Route path={Paths.SEARCH} element={<Search />} />              
             </Routes>
           </CSSTransition>
         </TransitionGroup>
       </S.ScreenContainer>
-      <Navbar />
+      <Navbar height={$margin}/>
     </S.AppContainer>
   );
 };
@@ -55,6 +64,7 @@ const S = {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: ${$margin};
   `,
 };
 
