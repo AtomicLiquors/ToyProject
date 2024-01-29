@@ -1,7 +1,7 @@
-import Button from "@/components/gadgets/Button";
+import Button from "@/common/gadgets/Button";
 import styled from "styled-components";
 import { Flex } from "@/styles/container";
-import Modal from "@/components/layout/Modal";
+import Modal from "@/common/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
 import { Link } from "react-router-dom";
 import Paths from "@/util/consts/paths";

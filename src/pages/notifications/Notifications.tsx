@@ -1,4 +1,4 @@
-import NotificationTab, { TabType } from "@/components/NotificationTab";
+import NotificationTab, { TabType } from "@/common/NotificationTab";
 import { Flex } from "@/styles/container";
 import styled from "styled-components";
 

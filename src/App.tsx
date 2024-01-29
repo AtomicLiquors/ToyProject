@@ -7,19 +7,20 @@ import Landing from "@/pages/landing/Landing";
 import NotFound from "@/pages/NotFound";
 import Feed from "@/pages/feed/Feed";
 import Join from "@/pages/join/Join";
-import Navbar from "@/components/layout/Navbar";
+import Navbar from "@/common/layout/Navbar";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Paths from "@/util/consts/paths";
 import JoinInfo from "@/pages/join/JoinInfo";
 import JoinProfileMessage from "@/pages/join/JoinProfileMessage";
 import Profile from "@/pages/profile/Profile";
 import Search from "@/pages/search/Search";
-import NewPost from "./pages/newpost/NewPost";
-import ProfileEdit from "./pages/newpost/ProfileEdit";
-import Notifications from "./pages/notifications/Notifications";
+import NewPost from "@/pages/newpost/NewPost";
+import ProfileEdit from "@/pages/newpost/ProfileEdit";
+import Notifications from "@/pages/notifications/Notifications";
+import { Flex } from "./styles/container";
 
 
-const $margin: number = 32;
+const $margin: number = 3;
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -28,7 +29,7 @@ const App: React.FC = () => {
     /* location.pathname==="/postwrite"?location.pathname:null */
 
     <S.AppContainer>
-      <S.ScreenContainer>
+      <S.ScreenContainer $column>
         <TransitionGroup className="transition-group" >
           <CSSTransition
             key={location.pathname}
@@ -51,7 +52,9 @@ const App: React.FC = () => {
           </CSSTransition>
         </TransitionGroup>
       </S.ScreenContainer>
-      <Navbar height={$margin}/>
+      <div style={{opacity: 0.5}}>
+        <Navbar height={$margin}/>
+      </div>
     </S.AppContainer>
   );
 };
@@ -60,11 +63,7 @@ const S = {
   AppContainer: styled.div`
   `,
 
-  ScreenContainer: styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: ${$margin};
+  ScreenContainer: styled(Flex)`
   `,
 };
 

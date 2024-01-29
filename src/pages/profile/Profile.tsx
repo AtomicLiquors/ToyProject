@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Flex } from "@/styles/container";
-import Modal from "@/components/layout/Modal";
-import ProfileImg from "@/components/ProfileImg";
+import Modal from "@/common/layout/Modal";
+import ProfileImg from "@/common/ProfileImg";
 import modalManager from "@/manager/ModalManager.ts";
-import Button, { ButtonThemeOption } from "@/components/gadgets/Button";
-import Gallery from "@/components/Gallery";
+import Button, { ButtonThemeOption } from "@/common/gadgets/Button";
+import Gallery from "@/common/Gallery";
 import { Link } from "react-router-dom";
 import Paths from "@/util/consts/paths";
 

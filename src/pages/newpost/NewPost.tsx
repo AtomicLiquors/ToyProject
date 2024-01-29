@@ -1,4 +1,4 @@
-import Input from '@/components/gadgets/Input'
+import Input from '@/common/gadgets/Input'
 import { Flex } from '@/styles/container'
 import styled from 'styled-components'
 

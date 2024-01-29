@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Gallery from "@/components/Gallery";
-import Input from "@/components/gadgets/Input";
+import Gallery from "@/common/Gallery";
+import Input from "@/common/gadgets/Input";
 
 const Search = () => {
   return (

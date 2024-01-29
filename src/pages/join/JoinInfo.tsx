@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { Flex } from "@/styles/container";
-import Modal from "@/components/layout/Modal";
+import Modal from "@/common/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
-import Header from "@/components/layout/Header";
-import Input from "@/components/gadgets/Input";
+import Header from "@/common/layout/Header";
+import Input from "@/common/gadgets/Input";
 import Paths from "@/util/consts/paths";
-import ProfileImg from "@/components/ProfileImg";
-import Button from "@/components/gadgets/Button";
+import ProfileImg from "@/common/ProfileImg";
+import Button from "@/common/gadgets/Button";
 import { useNavigate } from "react-router-dom";
 
 const JoinInfo: React.FC = () => {

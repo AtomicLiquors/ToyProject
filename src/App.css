@@ -2,7 +2,17 @@ html, body, #root {
     font: 0.9rem Noto Sans;
     height: 100%;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     /* 트랜지션 적용시 스크롤바 출현 비활성화 */
 }
+
+body *{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+body *::-webkit-scrollbar {
+    display: none;
+}
+
 

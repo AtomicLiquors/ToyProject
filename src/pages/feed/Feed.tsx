@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { Flex } from "@/styles/container";
-import ProfileImg from "@/components/ProfileImg";
-import Header, { marginTop } from "@/components/layout/Header";
+import Header from "@/common/layout/Header";
+import FollowingTab from "@/pages/feed/components/FollowingTab";
+import FeedContainer, { feedItem } from "@/pages/feed/components/FeedContainer";
 
-const feedItems = [
+const feedItems: feedItem[] = [
   {
     feedId: 0,
     username: "joshua_i",
@@ -23,50 +24,21 @@ const Feed: React.FC = () => {
   return (
     <S.Container $center $column style={{overflow: 'hidden'}}>
       <Header/>
-      <Flex style={{ padding: '5px', overflow: "scroll", gap: "25px", minHeight: "32px", marginTop: marginTop }}>
-        <ProfileImg width={32} />
-        <ProfileImg width={32} />
-        <ProfileImg width={32} />
-        <ProfileImg width={32} />
-        <ProfileImg width={32} />
-        <ProfileImg width={32} />
-        <ProfileImg width={32} />
-      </Flex>
-      <S.FeedContainer style={{overflow: 'scroll'}}>
-        {feedItems ? (
-          feedItems.map((feed, feedId) => (
-            <div key={feedId} style={{ width: "100%" }}>
-              <Flex $alignCenter>
-                <ProfileImg width={32} />
-                {feed.username}
-              </Flex>
-              <img src={feed.imgURL} width={"100%"} />
-
-              <Flex $spaceAround $alignCenter>
-                <div>comment</div>
-                <div>3 dots</div>
-                <div>icon</div>
-              </Flex>
-            </div>
-          ))
-        ) : (
-          <div>피드에 표시할 항목이 없습니다.</div>
-        )}
-      </S.FeedContainer>
+      <FollowingTab/>
+      <FeedContainer feedItems={feedItems}/>
     </S.Container>
   );
 };
 
 const S = {
   Container: styled(Flex)`
+    box-sizing: border-box;
     height: 100%;
     background: white;
     width: 100%;
     position: absolute;
   `,
 
-  FeedContainer: styled.div`
-  `,
 };
 
 export default Feed;
