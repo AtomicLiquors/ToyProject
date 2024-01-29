@@ -1,5 +1,5 @@
 import {outlinedIcons} from '@/styles/icons'
-import { profileColorGenerator } from '@/util/colorGenerator';
+import { profileColorGenerator } from '@/util/helpers/colorGenerator';
 // width, img src
 
 interface ImgProps {

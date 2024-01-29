@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {outlinedIcons} from '@/styles/icons'
 import { Link } from "react-router-dom";
-import Paths from "@/consts/paths";
+import Paths from "@/util/consts/paths";
 
 const Navbar:React.FC<{height: number}> = ({height}) => {
     return (

@@ -4,7 +4,7 @@ import Modal from "@/components/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
 import Header from "@/components/layout/Header";
 import Input from "@/components/gadgets/Input";
-import Paths from "@/consts/paths";
+import Paths from "@/util/consts/paths";
 import ProfileImg from "@/components/ProfileImg";
 import Button from "@/components/gadgets/Button";
 import { useNavigate } from "react-router-dom";

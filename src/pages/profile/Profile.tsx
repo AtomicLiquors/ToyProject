@@ -6,7 +6,7 @@ import modalManager from "@/manager/ModalManager.ts";
 import Button, { ButtonThemeOption } from "@/components/gadgets/Button";
 import Gallery from "@/components/Gallery";
 import { Link } from "react-router-dom";
-import Paths from "@/consts/paths";
+import Paths from "@/util/consts/paths";
 
 const Profile: React.FC = () => {
   const { isOpen, close } = modalManager();

@@ -5,7 +5,7 @@ import Modal from "@/components/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
 import Header from "@/components/layout/Header";
 import { useNavigate } from "react-router-dom";
-import Paths from "@/consts/paths";
+import Paths from "@/util/consts/paths";
 
 const Join: React.FC = () => {
   const navigate = useNavigate();
