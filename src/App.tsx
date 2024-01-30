@@ -1,13 +1,13 @@
 import React from "react";
-import "@/App.css";
-import "@/Transition.css";
+import "./App.css";
+import "./Transition.css";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "@/common/layout/Navbar";
-import Paths from "@/util/consts/Paths";
-import { Flex } from "@/styles/container";
+import Navbar from "./common/layout/Navbar";
+import Paths from "./util/consts/Paths";
+import { Flex } from "./styles/container";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styled from "styled-components";
-import Pages from "@/pages";
+import Pages from "./pages";
 
 const App: React.FC = () => {
   const location = useLocation();
