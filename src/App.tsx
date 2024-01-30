@@ -2,22 +2,12 @@ import React from "react";
 import "@/App.css";
 import "@/Transition.css";
 import { Routes, Route, useLocation } from "react-router-dom";
-import styled from "styled-components";
-import Landing from "@/pages/landing/Landing";
-import NotFound from "@/pages/NotFound";
-import Feed from "@/pages/feed/Feed";
-import Join from "@/pages/join/Join";
 import Navbar from "@/common/layout/Navbar";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Paths from "@/util/consts/Paths";
-import JoinInfo from "@/pages/join/JoinInfo";
-import JoinProfileMessage from "@/pages/join/JoinProfileMessage";
-import Profile from "@/pages/profile/Profile";
-import Search from "@/pages/search/Search";
-import NewPost from "@/pages/newpost/NewPost";
-import ProfileEdit from "@/pages/newpost/ProfileEdit";
-import Notifications from "@/pages/notifications/Notifications";
-import { Flex } from "./styles/container";
+import { Flex } from "@/styles/container";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import styled from "styled-components";
+import Pages from "@/pages";
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -34,20 +24,20 @@ const App: React.FC = () => {
             classNames="slide"
           >
             <Routes location={location}>
-              <Route path="/" element={<Landing />} />
-              <Route path={Paths.JOIN} element={<Join />} />
-              <Route path={Paths.JOININFO} element={<JoinInfo />} />
+              <Route path="/" element={<Pages.Landing />} />
+              <Route path={Paths.JOIN} element={<Pages.Join />} />
+              <Route path={Paths.JOININFO} element={<Pages.JoinInfo />} />
               <Route
                 path={Paths.JOINPROFILEMESSAGE}
-                element={<JoinProfileMessage />}
+                element={<Pages.JoinProfileMessage />}
               />
-              <Route path="/*" element={<NotFound />} />
-              <Route path={Paths.FEED} element={<Feed />} />
-              <Route path={Paths.NEWPOST} element={<NewPost />} />
-              <Route path={Paths.NOTIFICATIONS} element={<Notifications />} />
-              <Route path={Paths.PROFILE} element={<Profile />} />
-              <Route path={Paths.PROFILEEDIT} element={<ProfileEdit />} />
-              <Route path={Paths.SEARCH} element={<Search />} />
+              <Route path="/*" element={<Pages.NotFound />} />
+              <Route path={Paths.FEED} element={<Pages.Feed />} />
+              <Route path={Paths.NEWPOST} element={<Pages.NewPost />} />
+              <Route path={Paths.NOTIFICATIONS} element={<Pages.Notifications />} />
+              <Route path={Paths.PROFILE} element={<Pages.Profile />} />
+              <Route path={Paths.PROFILEEDIT} element={<Pages.ProfileEdit />} />
+              <Route path={Paths.SEARCH} element={<Pages.Search />} />
             </Routes>
           </CSSTransition>
         </TransitionGroup>

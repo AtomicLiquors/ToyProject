@@ -12,7 +12,7 @@ interface HeaderProps {
 
 export const marginTop = 3;
 
-const Header: React.FC<HeaderProps> = ({ backlink='/' }) => {
+const PageHeader: React.FC<HeaderProps> = ({ backlink='/' }) => {
   return (
     <S.Container $flxStart $marginTop={marginTop} $borderColor={Palette.GRAY}>
       {backlink ? <Link to={backlink}><img src={outlinedIcons.back} width={24}/></Link> : <></>}
@@ -31,4 +31,4 @@ const S = {
   `
 }
 
-export default Header;
+export default PageHeader;

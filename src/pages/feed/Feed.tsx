@@ -1,6 +1,6 @@
 //import styled from "styled-components";
 //import { Flex } from "@/styles/container";
-import Header from "@/common/layout/Header";
+import PageHeader from "@/common/layout/PageHeader";
 import FollowingTab from "@/pages/feed/components/FollowingTab";
 import FeedContainer, { feedItem } from "@/pages/feed/components/FeedContainer";
 import Page from "@/common/layout/Page";
@@ -24,12 +24,13 @@ const feedItems: feedItem[] = [
 const Feed: React.FC = () => {
   return (
     <Page>
-      <Header/>
-      <FollowingTab/>
-      <FeedContainer feedItems={feedItems}/>
+      <PageHeader />
+      <div style={{ width: '100%', overflowY: "scroll" }}>
+        <FollowingTab />
+        <FeedContainer feedItems={feedItems} />
+      </div>
     </Page>
   );
 };
-
 
 export default Feed;

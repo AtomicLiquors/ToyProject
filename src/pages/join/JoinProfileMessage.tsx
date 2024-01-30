@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Flex } from "@/styles/container";
 import Modal from "@/common/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
-import Header from "@/common/layout/Header";
+import PageHeader from "@/common/layout/PageHeader";
 import Input from "@/common/gadgets/Input";
 import Paths from "@/util/consts/Paths";
 import ProfileImg from "@/common/ProfileImg";
@@ -20,11 +20,11 @@ const JoinProfileMessage: React.FC = () => {
     <S.Container $column $center>
     
       <Modal isOpen={isOpen} close={close}/>
-      <Header backlink={Paths.JOININFO}/>
+      <PageHeader backlink={Paths.JOININFO}/>
       <h1>Temp Logo</h1>
       
       
-      <ProfileImg width={32}/>
+      <ProfileImg size={3}/>
       
       <Flex $column $center>
         <p>프로필 메시지를 작성해 보세요! (선택)</p>

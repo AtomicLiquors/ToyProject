@@ -20,6 +20,5 @@ const S = {
     height: calc(100% - ${(props) => props.$spacing}rem);
     position: absolute;
   `,
-
 }
 export default Page

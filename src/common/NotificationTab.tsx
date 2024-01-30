@@ -25,7 +25,7 @@ const NotificationTab: React.FC<TabProbs> = ({username, type, userCount, postImg
   return (
     <S.Container>
       <S.Grid>
-        <ProfileImg width={16}/> {/* src={userImg} */}
+        <ProfileImg size={1.6}/> {/* src={userImg} */}
         <div>
         <b>{username}</b>님
         { (userCount ? `외 ${userCount} 명이` : '이') + ' '}

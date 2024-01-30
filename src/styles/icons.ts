@@ -4,6 +4,7 @@ import search from '/images/icons/outlined/search.png';
 import user from '/images/icons/outlined/user.png';
 import back from '/images/icons/outlined/back.png';
 import comments from '/images/icons/outlined/comments.png';
+import bell from '/images/icons/outlined/bell.png';
 
 export const outlinedIcons = {
     home: home,
@@ -12,4 +13,5 @@ export const outlinedIcons = {
     user: user,
     back: back,
     comments: comments,
+    bell: bell,
 }

@@ -5,15 +5,17 @@ import styled from "styled-components";
 const FeedHeader: React.FC<{ username: string }> = ({ username }) => {
   return (
     <S.Container $alignCenter>
-      <ProfileImg width={32} />
-      {username}
+      <ProfileImg size={2.4} username={username}/>
+      <b>{username}</b>
     </S.Container>
   );
 };
 
 const S = {
   Container: styled(Flex)`
-    gap: 1rem;
+    padding: 0 0 1rem 1rem;
+    gap: 0.8rem;
+    color: #444;
   `,
 };
 export default FeedHeader;

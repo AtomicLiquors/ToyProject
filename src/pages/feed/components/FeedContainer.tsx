@@ -36,12 +36,13 @@ const FeedContainer:React.FC<FeedContainerProps> = ({feedItems}) => {
 
 const S = {
   Container: styled(Flex)`
-    overflow: scroll;
+    padding: 1rem 0 1rem 0;
+    height: auto;
     gap: 2rem;
   `, 
   FeedItemContainer: styled(Flex)`
     width: 100%;
-    gap: 1rem;
+    gap: 0.1rem;
   `,
   NoFeedContainer: styled.div`
     width: 100%;

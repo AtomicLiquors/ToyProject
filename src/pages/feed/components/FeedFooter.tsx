@@ -14,7 +14,8 @@ const FeedFooter = () => {
 
 const S = {
   Container: styled(Flex)`
-    padding: 0 1rem 0 1rem;
+    box-sizing: border-box;
+    padding: 1rem 2rem 1rem 2rem;
   `,
 };
 export default FeedFooter;

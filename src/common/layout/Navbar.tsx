@@ -4,25 +4,28 @@ import { Link } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
 import { navbarRemHeight } from "@/util/consts/LayoutMeasurements";
 import { Flex } from "@/styles/container";
+import ProfileImg from "@/common/ProfileImg";
+
+const $size = 2;
 
 const Navbar: React.FC = () => {
   return (
-    <S.Container $spaceAround style={{ height: `${navbarRemHeight}rem` }}>
+    <S.Container $alignCenter $spaceAround style={{ height: `${navbarRemHeight}rem` }}>
       <div></div>
       <Link to={Paths.FEED}>
-        <img src={outlinedIcons.home} width={32} />
+        <S.Icon src={outlinedIcons.home} />
       </Link>
       <Link to={Paths.SEARCH}>
-        <img src={outlinedIcons.search} width={32} />
+        <S.Icon src={outlinedIcons.search} />
       </Link>
       <Link to={Paths.NEWPOST}>
-        <img src={outlinedIcons.add} width={32} />
+        <S.Icon src={outlinedIcons.add} />
       </Link>
       <Link to={Paths.NOTIFICATIONS}>
-        <img src={outlinedIcons.home} width={32} />
+        <S.Icon src={outlinedIcons.bell} />
       </Link>
       <Link to={Paths.PROFILE}>
-        <img src={outlinedIcons.user} width={32} />
+        <ProfileImg size={$size} username={'2kooong2'}/>
       </Link>
       <div></div>
     </S.Container>
@@ -36,7 +39,10 @@ const S = {
     z-index: 1;
     bottom: 0;
     width: 100%;
-    
+  `,
+  Icon: styled.img`
+    margin-top: 0.3rem;
+    width: ${$size}rem;
   `,
 };
 

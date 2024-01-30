@@ -17,7 +17,7 @@ const Profile: React.FC = () => {
       <Flex $center>jacob West</Flex>
       <S.ProfileContianer $column>
         <S.ProfileImgAndNumerics $spaceAround>
-          <ProfileImg width={32}/>
+          <ProfileImg size={3}/>
           <div>
             <div>54</div>
             <div>게시글</div>

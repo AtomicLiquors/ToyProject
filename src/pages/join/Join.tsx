@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Flex } from "@/styles/container";
 import Modal from "@/common/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
-import Header from "@/common/layout/Header";
+import PageHeader from "@/common/layout/PageHeader";
 import { useNavigate } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
 
@@ -15,7 +15,7 @@ const Join: React.FC = () => {
     <S.Container $column $center>
     
       <Modal isOpen={isOpen} close={close}/>
-      <Header backlink={Paths.LANDING}/>
+      <PageHeader backlink={Paths.LANDING}/>
       <h1>Temp Logo</h1>
       <Flex $column $center>
         <p>소셜 로그인을 통해 인증해주세요.</p>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Flex } from "@/styles/container";
 import Modal from "@/common/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
-import Header from "@/common/layout/Header";
+import PageHeader from "@/common/layout/PageHeader";
 import Input from "@/common/gadgets/Input";
 import Paths from "@/util/consts/Paths";
 import ProfileImg from "@/common/ProfileImg";
@@ -16,11 +16,11 @@ const JoinInfo: React.FC = () => {
   return (
     <S.Container $column $center>
       <Modal isOpen={isOpen} close={close} />
-      <Header backlink={Paths.JOIN} />
+      <PageHeader backlink={Paths.JOIN} />
       <h1>Temp Logo</h1>
-       <ProfileImg width={32}/>
-      
-      <S.Block $column $center style={{borderTop: '1px solid #ccc'}}>
+      <ProfileImg size={3} />
+
+      <S.Block $column $center style={{ borderTop: "1px solid #ccc" }}>
         <Flex $column $center>
           <p>환영합니다, 사용자님.</p>
         </Flex>
@@ -28,7 +28,7 @@ const JoinInfo: React.FC = () => {
         <Input stretch label={"생년월일"} />
         <Input stretch label={"성별"} />
       </S.Block>
-      <S.Block $column $center style={{borderTop: '1px solid #ccc'}}>
+      <S.Block $column $center style={{ borderTop: "1px solid #ccc" }}>
         <Input stretch label={"프로필 메시지"} heightInVh={10} />
 
         <Button onClick={() => navigate(Paths.FEED)} text={"완료"} stretch />
@@ -56,4 +56,3 @@ const S = {
 };
 
 export default JoinInfo;
-
