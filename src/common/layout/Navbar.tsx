@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { outlinedIcons } from "@/styles/icons";
 import { Link } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
-import { navbarRemHeight } from "@/util/consts/LayoutMeasurements";
+import { navbarRemHeight } from "@/styles/LayoutMeasurements";
 import { Flex } from "@/styles/container";
 import ProfileImg from "@/common/ProfileImg";
 
-const $size = 2;
+const $itemSize = 2;
 
 const Navbar: React.FC = () => {
   return (
@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
         <S.Icon src={outlinedIcons.bell} />
       </Link>
       <Link to={Paths.PROFILE}>
-        <ProfileImg size={$size} username={'2kooong2'}/>
+        <ProfileImg size={$itemSize} username={'2kooong2'}/>
       </Link>
       <div></div>
     </S.Container>
@@ -42,7 +42,7 @@ const S = {
   `,
   Icon: styled.img`
     margin-top: 0.3rem;
-    width: ${$size}rem;
+    width: ${$itemSize}rem;
   `,
 };
 

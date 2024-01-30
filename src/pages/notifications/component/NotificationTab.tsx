@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import ProfileImg from './ProfileImg';
-import Button from './gadgets/Button';
+import ProfileImg from '../../../common/ProfileImg';
+import Button from '../../../common/gadgets/Button';
 import { Palette } from '@/styles/palette';
 
 
@@ -33,7 +33,7 @@ const NotificationTab: React.FC<TabProbs> = ({username, type, userCount, postImg
         <span style={{color: Palette.GRAY}}>{timestamp}</span>
         </div>
         { postImg ? <img src={postImg} width={32}/> : <></>}
-        { type === TabType.FOLLOW ? <Button text={'팔로우'}/> : <></>}
+        { type === TabType.FOLLOW ? <Button minWidth={64} text={'팔로우'}/> : <></>}
       </S.Grid>
     </S.Container>
   )

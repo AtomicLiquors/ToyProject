@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { marginTop as $marginTop } from "@/common/layout/PageHeader";
 import FollowingTabItem from "./FollowingTabItem";
 
+
 const FollowingTab = () => {
   return (
     <S.Container>

@@ -6,6 +6,7 @@ interface ButtonProps {
   text: string; 
   theme?: ButtonThemeOption;
   stretch?: boolean;
+  minWidth?: number;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -36,15 +37,16 @@ const $themes: OptionRequirements = {
 
 
 
-const Button: React.FC<ButtonProps> = ({text, stretch, theme = ButtonThemeOption.BLUE, onClick}) => {
+const Button: React.FC<ButtonProps> = ({text, stretch, minWidth, theme = ButtonThemeOption.BLUE, onClick}) => {
   return (
-    <S.Button onClick={onClick} type="button" $stretch={stretch} $theme={theme}>{text}</S.Button>
+    <S.Button onClick={onClick} type="button" $stretch={stretch} $theme={theme} $minWidth={minWidth}>{text}</S.Button>
   );
 };
 
 const S = {
-    Button: styled.button<{ $theme: ButtonThemeOption, $stretch?: boolean}>`
+    Button: styled.button<{ $theme: ButtonThemeOption, $stretch?: boolean, $minWidth?: number}>`
         width: ${(props) => (props.$stretch ? '100%' : 'auto')};
+        min-width: ${(props) => (props.$minWidth)}px;
         margin: 0;
         padding: 0.5em;
         border-radius: 5px;

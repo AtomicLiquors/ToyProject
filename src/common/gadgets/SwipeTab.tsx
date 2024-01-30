@@ -4,16 +4,21 @@ type SwipeTabProps = {
     children: React.ReactNode;
 }
 
+import { Palette } from "@/styles/palette";
+
+const $borderColor = Palette.GRAY;
+
 const SwipeTab:React.FC<SwipeTabProps> = ({children}) => {
   return (
-    <S.Div>
+    <S.Container>
       {children}
-    </S.Div>
+    </S.Container>
   )
 }
 
 const S = {
-  Div: styled.div`
+  Container: styled.div`
+    border-bottom: 1px solid ${$borderColor};
     width: 100%;
     white-space: nowrap;
     overflow-x: scroll; 
