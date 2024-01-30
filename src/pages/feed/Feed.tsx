@@ -1,8 +1,9 @@
-import styled from "styled-components";
-import { Flex } from "@/styles/container";
+//import styled from "styled-components";
+//import { Flex } from "@/styles/container";
 import Header from "@/common/layout/Header";
 import FollowingTab from "@/pages/feed/components/FollowingTab";
 import FeedContainer, { feedItem } from "@/pages/feed/components/FeedContainer";
+import Page from "@/common/layout/Page";
 
 const feedItems: feedItem[] = [
   {
@@ -22,23 +23,13 @@ const feedItems: feedItem[] = [
 
 const Feed: React.FC = () => {
   return (
-    <S.Container $center $column style={{overflow: 'hidden'}}>
+    <Page>
       <Header/>
       <FollowingTab/>
       <FeedContainer feedItems={feedItems}/>
-    </S.Container>
+    </Page>
   );
 };
 
-const S = {
-  Container: styled(Flex)`
-    box-sizing: border-box;
-    height: 100%;
-    background: white;
-    width: 100%;
-    position: absolute;
-  `,
-
-};
 
 export default Feed;

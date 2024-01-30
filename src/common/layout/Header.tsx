@@ -3,6 +3,7 @@ import { Flex } from "@/styles/container";
 import { Link } from "react-router-dom";
 import { Palette } from "@/styles/palette";
 import {outlinedIcons} from '@/styles/icons'
+import styled from "styled-components";
 
 interface HeaderProps {
   backlink?: string;
@@ -13,10 +14,21 @@ export const marginTop = 3;
 
 const Header: React.FC<HeaderProps> = ({ backlink='/' }) => {
   return (
-    <Flex $flxStart style={{position: 'absolute', top:0, height: `${marginTop}rem`, width: '100%', borderBottom: `1px solid ${Palette.GRAY}`}}>
+    <S.Container $flxStart $marginTop={marginTop} $borderColor={Palette.GRAY}>
       {backlink ? <Link to={backlink}><img src={outlinedIcons.back} width={24}/></Link> : <></>}
-    </Flex>
+    </S.Container>
   );
 };
+
+const S = {
+  Container: styled(Flex)<{$marginTop: number, $borderColor: string}>`
+    position: absolute;
+    top:0;
+    height: ${(props) => props.$marginTop}rem;
+    width: 100%;
+    border-bottom: 1px solid ${(props) => props.$borderColor};
+    background: white;
+  `
+}
 
 export default Header;

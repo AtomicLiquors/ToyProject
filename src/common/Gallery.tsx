@@ -4,19 +4,19 @@ const Gallery: React.FC = () => {
 
     return (
         <S.GalleryGrid>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
-            <S.GridItem src={'http://via.placeholder.com/200/200/'}/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
+            <S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>
         </S.GalleryGrid>
     )
     

@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import { outlinedIcons } from "@/styles/icons";
 import { Link } from "react-router-dom";
-import Paths from "@/util/consts/paths";
+import Paths from "@/util/consts/Paths";
+import { navbarRemHeight } from "@/util/consts/LayoutMeasurements";
+import { Flex } from "@/styles/container";
 
-const Navbar: React.FC<{ height: number }> = ({ height }) => {
+const Navbar: React.FC = () => {
   return (
-    <S.Container style={{ height: `${height}rem` }}>
+    <S.Container $spaceAround style={{ height: `${navbarRemHeight}rem` }}>
+      <div></div>
       <Link to={Paths.FEED}>
         <img src={outlinedIcons.home} width={32} />
       </Link>
@@ -21,20 +24,19 @@ const Navbar: React.FC<{ height: number }> = ({ height }) => {
       <Link to={Paths.PROFILE}>
         <img src={outlinedIcons.user} width={32} />
       </Link>
+      <div></div>
     </S.Container>
   );
 };
 
 const S = {
-  Container: styled.div`
+  Container: styled(Flex)`
     position: absolute;
     background: white;
-    padding: 10px 0 10px 0;
     z-index: 1;
     bottom: 0;
     width: 100%;
-    display: flex;
-    justify-content: space-around;
+    
   `,
 };
 

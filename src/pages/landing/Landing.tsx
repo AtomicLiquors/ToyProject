@@ -4,7 +4,7 @@ import { Flex } from "@/styles/container";
 import Modal from "@/common/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
 import { Link } from "react-router-dom";
-import Paths from "@/util/consts/paths";
+import Paths from "@/util/consts/Paths";
 
 const Landing: React.FC = () => {
   const { isOpen, open, close } = modalManager();

@@ -17,6 +17,7 @@ const S = {
     height: 100%;
     position: absolute;
     background: white;
+    overflow: scroll;
   `,
 };
 export default Search;

@@ -23,7 +23,7 @@ const FeedContainer:React.FC<FeedContainerProps> = ({feedItems}) => {
           feedItems.map((feed, feedId) => (
             <S.FeedItemContainer $column key={feedId}>
               <FeedHeader username={feed.username}/>
-              <img src={feed.imgURL} width={"100%"} />
+              <img src={feed.imgURL} width={"100%"} draggable="false"/>
               <FeedFooter/>
             </S.FeedItemContainer>
           ))
