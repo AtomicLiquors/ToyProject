@@ -1,6 +1,6 @@
 {
-    "short_name": "WeatherApp",
-    "name": "WeatherApp PWA",
+    "short_name": "ToyProject",
+    "name": "ToyProject PWA",
     "icons": [{
         "src": "/images/logo.png",
         "type": "image/png",
