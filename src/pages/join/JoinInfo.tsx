@@ -8,42 +8,50 @@ import Paths from "@/util/consts/Paths";
 import ProfileImg from "@/common/ProfileImg";
 import Button from "@/common/gadgets/Button";
 import { useNavigate } from "react-router-dom";
+import Page from "@/common/layout/Page";
+import PageBody from "@/common/layout/PageBody";
 
 const JoinInfo: React.FC = () => {
   const navigate = useNavigate();
   const { isOpen, close } = modalManager();
 
   return (
-    <S.Container $column $center>
+    <Page>
       <Modal isOpen={isOpen} close={close} />
       <PageHeader backlink={Paths.JOIN} />
-      <h1>Temp Logo</h1>
-      <ProfileImg size={3} />
-
-      <S.Block $column $center style={{ borderTop: "1px solid #ccc" }}>
+      <PageBody>
         <Flex $column $center>
+          <h1>Temp Logo</h1>
+          <ProfileImg size={4} />
           <p>환영합니다, 사용자님.</p>
         </Flex>
-        <LabledInput stretch label={"닉네임"} />
-        <LabledInput stretch label={"생년월일"} />
-        <LabledInput stretch label={"성별"} />
-      </S.Block>
-      <S.Block $column $center style={{ borderTop: "1px solid #ccc" }}>
-        <LabledInput stretch label={"프로필 메시지"} textAreaHeight={10} />
+        <S.Block
+          $column
+          $center
+          style={{ borderTop: "1px solid #ccc", padding: "1rem", gap: "1rem" }}
+        >
+          <LabledInput stretch label={"닉네임"} />
+          <LabledInput stretch label={"생년월일"} />
+          <LabledInput stretch label={"성별"} />
+        </S.Block>
+        <S.Block
+          $column
+          $center
+          style={{ borderTop: "1px solid #ccc", padding: "1rem" }}
+        >
+          <LabledInput stretch label={"프로필 메시지"} textAreaHeight={1} />
 
-        <Button onClick={() => navigate(Paths.FEED)} text={"완료"} stretch />
-      </S.Block>
-    </S.Container>
+          <Button onClick={() => navigate(Paths.FEED)} text={"완료"} stretch />
+        </S.Block>
+      </PageBody>
+    </Page>
   );
 };
 
 const S = {
   Container: styled(Flex)`
     box-sizing: border-box;
-    position: absolute;
-    background: white;
-    height: 100%;
-    width: 100%;
+    overflow: scroll;
     gap: 1rem;
   `,
 

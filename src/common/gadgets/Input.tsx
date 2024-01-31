@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { clearDefault } from "@/styles/clear-default";
 
 interface InputProps {
   placeholder?: string;
@@ -69,13 +70,7 @@ const S = {
     -moz-appearance: none;
     border: 1px solid #ccc;
     padding: 5px 10px 5px 10px;
-    margin: 0; /* Remove default margin */
-    box-sizing: border-box; /* Ensure padding and border are included in the total width/height */
-    outline: none; /* Remove default outline */
-    background-color: transparent; /* Remove default background color */
-    color: inherit; /* Inherit text color */
-    font-family: inherit; /* Inherit font family */
-    font-size: inherit; /* Inherit font size */
+    ${clearDefault.input}
   `,
 
   Input: styled.input<InputStyleProps>`
@@ -84,16 +79,9 @@ const S = {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    border: none;
-    border-bottom: 1px solid #ccc;
     padding: 5px 5px 5px 5px;
-    margin: 0; /* Remove default margin */
-    box-sizing: border-box; /* Ensure padding and border are included in the total width/height */
-    outline: none; /* Remove default outline */
-    background-color: transparent; /* Remove default background color */
-    color: inherit; /* Inherit text color */
-    font-family: inherit; /* Inherit font family */
-    font-size: inherit; /* Inherit font size */
+    ${clearDefault.input}
+    border-bottom: 1px solid #ccc;
   `,
 };
 

@@ -14,20 +14,20 @@ const Profile: React.FC = () => {
   return (
     <S.Container $column $center>
       <Modal isOpen={isOpen} close={close} />
-      <Flex $center>jacob West</Flex>
+      <Flex $center style={{height: '3rem'}}><b>jacob West</b></Flex>
       <S.ProfileContianer $column>
         <S.ProfileImgAndNumerics $spaceAround>
           <ProfileImg size={3}/>
           <div>
-            <div>54</div>
+            <div><b>54</b></div>
             <div>게시글</div>
           </div>
           <div>
-            <div>844</div>
+            <div><b>844</b></div>
             <div>팔로워</div>
           </div>
           <div>
-            <div>162</div>
+            <div><b>162</b></div>
             <div>팔로잉</div>
           </div>
         </S.ProfileImgAndNumerics>

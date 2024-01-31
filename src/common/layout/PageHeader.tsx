@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Palette } from "@/styles/palette";
 import {outlinedIcons} from '@/styles/icons'
 import styled from "styled-components";
+import { pageHeaderMargin } from "@/styles/layout-measurements";
 
 interface HeaderProps {
   backlink?: string;
@@ -14,7 +15,7 @@ export const marginTop = 3;
 
 const PageHeader: React.FC<HeaderProps> = ({ backlink='/' }) => {
   return (
-    <S.Container $flxStart $marginTop={marginTop} $borderColor={Palette.GRAY}>
+    <S.Container $flxStart $marginTop={pageHeaderMargin} $borderColor={Palette.GRAY}>
       {backlink ? <Link to={backlink}><img src={outlinedIcons.back} width={24}/></Link> : <></>}
     </S.Container>
   );

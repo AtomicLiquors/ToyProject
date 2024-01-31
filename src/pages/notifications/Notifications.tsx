@@ -1,10 +1,12 @@
+import Page from "@/common/layout/Page";
 import NotificationTab, { TabType } from "@/pages/notifications/component/NotificationTab";
 import { Flex } from "@/styles/container";
 import styled from "styled-components";
 
 const Notifications = () => {
   return (
-    <S.Container>
+    <Page>
+      <Flex $column style={{gap: '1rem', overflow: 'scroll', margin: '1rem'}}>
       <S.GroupTitle>
         <b>새 알림</b>
       </S.GroupTitle>
@@ -64,32 +66,24 @@ const Notifications = () => {
           timestamp={"2024-01-26"}
         />
       </S.Group>
-    </S.Container>
+      </Flex>
+    </Page>
   );
 };
 
 const S = {
-  Container: styled.div`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: white;
-    padding: 2rem;
-
-    box-sizing: border-box;
-    padding: 10px;
-  `,
 
   Group: styled(Flex)`
     width: 100%;
     flex-direction: column;
     align-items: center;
-
     
     box-sizing: border-box;
-    padding: 10px;
+    gap: 0.4rem;
   `,
 
-  GroupTitle: styled.div``,
+  GroupTitle: styled.div`
+    margin-top: 1rem;
+  `,
 };
 export default Notifications;

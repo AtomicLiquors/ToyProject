@@ -6,7 +6,7 @@ import React from 'react';
 
 const Page:React.FC<{children: React.ReactNode}> = ({children}) => {
   return (
-    <S.Container $spacing={navbarRemHeight} $column $center>
+    <S.Container $spacing={navbarRemHeight} $column>
       {children}
     </S.Container>
   )
