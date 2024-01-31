@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import ProfileImg from '../../../common/ProfileImg';
-import Button from '../../../common/gadgets/Button';
+import ProfileImg from '@/common/ProfileImg';
+import Button from '@/common/gadgets/Button';
 import { Palette } from '@/styles/palette';
 
 
@@ -25,7 +25,7 @@ const NotificationTab: React.FC<TabProbs> = ({username, type, userCount, postImg
   return (
     <S.Container>
       <S.Grid>
-        <ProfileImg size={1.6}/> {/* src={userImg} */}
+        <ProfileImg size={1.6}/> 
         <div>
         <b>{username}</b>님
         { (userCount ? `외 ${userCount} 명이` : '이') + ' '}

@@ -4,7 +4,7 @@ import { Flex } from "@/styles/container";
 import Modal from "@/common/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
 import PageHeader from "@/common/layout/PageHeader";
-import Input from "@/common/gadgets/Input";
+import LabledInput from "@/common/gadgets/Input";
 import Paths from "@/util/consts/Paths";
 import ProfileImg from "@/common/ProfileImg";
 import Button from "@/common/gadgets/Button";
@@ -30,7 +30,7 @@ const JoinProfileMessage: React.FC = () => {
         <p>프로필 메시지를 작성해 보세요! (선택)</p>
       </Flex>
 
-      <Input stretch label={'프로필 메시지'} heightInVh={20}/>
+      <LabledInput stretch label={'프로필 메시지'} textAreaHeight={20}/>
       
       <Button onClick={() => navigate(Paths.FEED)}text={"시작하기"} stretch />
     </S.Container>

@@ -4,24 +4,30 @@ import styled from "styled-components";
 interface InputProps {
   placeholder?: string;
   label?: string;
-  heightInVh?: number;
+  textAreaHeight?: number;
   stretch?: boolean;
+  height?: number;
+  rounded?: boolean;
 }
 
 interface InputStyleProps {
   $stretch?: boolean;
+  $textAreaHeight?: number;
   $height?: number;
+  $rounded?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({
+const LabledInput: React.FC<InputProps> = ({
   placeholder,
   stretch,
   label,
-  heightInVh,
+  height,
+  textAreaHeight,
+  rounded
 }) => {
   return (
-    <S.InputContainer $stretch={stretch} $height={heightInVh}>
-      {heightInVh ? (
+    <S.InputContainer $stretch={stretch} $height={height} $textAreaHeight={textAreaHeight} $rounded={rounded}>
+      {textAreaHeight ? (
         <>
           {label ? <S.InputLabel>{label}</S.InputLabel> : <></>}
           <S.TextArea placeholder={placeholder} />
@@ -50,12 +56,13 @@ const S = {
   `,
   InputContainer: styled.div<InputStyleProps>`
     width: ${(props) => (props.$stretch ? "100%" : "auto")};
-    ${(props) => (props.$height ? "min-height:" + props.$height + "vh" : "")};
+    ${(props) => (props.$textAreaHeight ? "min-height:" + props.$textAreaHeight + "rem" : "")};
+    height: ${(props) => (props.$height ? props.$height + "rem" : "auto")};
   `,
 
   TextArea: styled.textarea<InputStyleProps>`
     width: 100%;
-    ${(props) => (props.$height ? "height: 100%" : "")};
+    ${(props) => (props.$textAreaHeight ? "height: 100%" : "")};
     border-radius: 5px;
     appearance: none;
     -webkit-appearance: none;
@@ -71,7 +78,8 @@ const S = {
     font-size: inherit; /* Inherit font size */
   `,
 
-  Input: styled.input`
+  Input: styled.input<InputStyleProps>`
+    ${(props) => (props.$rounded ? "border-radius: 100%" : "")};
     width: 100%;
     appearance: none;
     -webkit-appearance: none;
@@ -89,4 +97,4 @@ const S = {
   `,
 };
 
-export default Input;
+export default LabledInput;

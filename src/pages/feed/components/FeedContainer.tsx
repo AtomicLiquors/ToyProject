@@ -8,6 +8,7 @@ export type feedItem =
       feedId: number;
       username: string;
       imgURL: string;
+      content: string;
     }
   
   
@@ -24,8 +25,8 @@ const FeedContainer:React.FC<FeedContainerProps> = ({feedItems}) => {
             <S.FeedItemContainer $column key={feedId}>
               <FeedHeader username={feed.username}/>
               <img src={feed.imgURL} width={"100%"} draggable="false"/>
-              <FeedFooter/>
-            </S.FeedItemContainer>
+              <FeedFooter username={feed.username} content={feed.content}/>
+            </S.FeedItemContainer >
           ))
         ) : (
           <S.NoFeedContainer>피드에 표시할 항목이 없습니다.</S.NoFeedContainer>

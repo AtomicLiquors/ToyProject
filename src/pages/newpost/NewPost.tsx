@@ -1,4 +1,4 @@
-import Input from '@/common/gadgets/Input'
+import LabledInput from '@/common/gadgets/Input'
 import { Flex } from '@/styles/container'
 import styled from 'styled-components'
 
@@ -8,7 +8,7 @@ const NewPost = () => {
     <S.Container>
       <S.Form $center $column>
         <Flex $center style={{height: '160px'}}>사진을 첨부해 주세요.</Flex>
-        <Input label={'내용'} heightInVh={20}/>
+        <LabledInput label={'내용'} textAreaHeight={20}/>
       </S.Form>
     </S.Container>
   )

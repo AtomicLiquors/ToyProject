@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { outlinedIcons } from "@/styles/icons";
 import { Link } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
-import { navbarRemHeight } from "@/styles/LayoutMeasurements";
+import { navbarRemHeight } from "@/styles/layout-measurements";
 import { Flex } from "@/styles/container";
 import ProfileImg from "@/common/ProfileImg";
 

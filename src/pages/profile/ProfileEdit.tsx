@@ -1,5 +1,5 @@
 import ProfileImg from '@/common/ProfileImg'
-import Input from '@/common/gadgets/Input'
+import LabledInput from '@/common/gadgets/Input'
 import PageHeader, { marginTop } from '@/common/layout/PageHeader'
 import { Flex } from '@/styles/container'
 import { Palette } from '@/styles/palette'
@@ -12,9 +12,9 @@ const ProfileEdit = () => {
       <Flex $column $center style={{marginTop: marginTop + `rem`}}>
         <ProfileImg size={6}/>
         <div style={{color: Palette.BLUE}}><u>프로필 사진 변경</u></div>
-        <Input stretch label={"닉네임"} />
-        <Input stretch label={"생년월일"} />
-        <Input stretch label={"성별"} />
+        <LabledInput stretch label={"닉네임"} />
+        <LabledInput stretch label={"생년월일"} />
+        <LabledInput stretch label={"성별"} />
       </Flex>
     </S.Container>
   )

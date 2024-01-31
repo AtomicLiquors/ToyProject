@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Flex } from "@/styles/container";
-import { navbarRemHeight } from "@/styles/LayoutMeasurements";
+import { navbarRemHeight } from "@/styles/layout-measurements";
 
 import React from 'react';
 
