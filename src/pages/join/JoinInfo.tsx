@@ -3,7 +3,7 @@ import { Flex } from "@/styles/container";
 import Modal from "@/common/layout/Modal";
 import modalManager from "@/manager/ModalManager.ts";
 import PageHeader from "@/common/layout/PageHeader";
-import LabledInput from "@/common/gadgets/Input";
+import LabeledInput from "@/common/gadgets/LabeledInput";
 import Paths from "@/util/consts/Paths";
 import ProfileImg from "@/common/ProfileImg";
 import Button from "@/common/gadgets/Button";
@@ -30,18 +30,18 @@ const JoinInfo: React.FC = () => {
           $center
           style={{ borderTop: "1px solid #ccc", padding: "1rem", gap: "1rem" }}
         >
-          <LabledInput stretch label={"닉네임"} />
-          <LabledInput stretch label={"생년월일"} />
-          <LabledInput stretch label={"성별"} />
+          <LabeledInput stretch label={"닉네임"} />
+          <LabeledInput stretch label={"생년월일"} />
+          <LabeledInput stretch label={"성별"} />
         </S.Block>
         <S.Block
           $column
           $center
           style={{ borderTop: "1px solid #ccc", padding: "1rem" }}
         >
-          <LabledInput stretch label={"프로필 메시지"} textAreaHeight={1} />
+          <LabeledInput stretch label={"프로필 메시지"} textAreaHeight={1} />
 
-          <Button onClick={() => navigate(Paths.FEED)} text={"완료"} stretch />
+          <Button onClick={() => navigate(Paths.JOINKEYWORDS)} text={"완료"} stretch />
         </S.Block>
       </PageBody>
     </Page>

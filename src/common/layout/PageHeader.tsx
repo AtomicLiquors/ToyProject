@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Flex } from "@/styles/container";
 import { Link } from "react-router-dom";
 import { Palette } from "@/styles/palette";
-import {outlinedIcons} from '@/styles/icons'
+import {outlinedIcons} from '@/styles/images'
 import styled from "styled-components";
 import { pageHeaderMargin } from "@/styles/layout-measurements";
 
@@ -10,8 +10,6 @@ interface HeaderProps {
   backlink?: string;
   children?: ReactNode;
 }
-
-export const marginTop = 3;
 
 const PageHeader: React.FC<HeaderProps> = ({ backlink='/' }) => {
   return (

@@ -1,5 +1,5 @@
 import { Flex } from '@/styles/container';
-import {outlinedIcons} from '@/styles/icons'
+import {outlinedIcons} from '@/styles/images'
 import { profileColorGenerator } from '@/util/helpers/colorGenerator';
 import styled from "styled-components";
 // width, img src

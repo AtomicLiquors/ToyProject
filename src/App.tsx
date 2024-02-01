@@ -31,6 +31,10 @@ const App: React.FC = () => {
                 path={Paths.JOINPROFILEMESSAGE}
                 element={<Pages.JoinProfileMessage />}
               />
+              <Route
+                path={Paths.JOINKEYWORDS}
+                element={<Pages.JoinKeywords/>}
+              />
               <Route path="/*" element={<Pages.NotFound />} />
               <Route path={Paths.FEED} element={<Pages.Feed />} />
               <Route path={Paths.NEWPOST} element={<Pages.NewPost />} />

@@ -1,5 +1,5 @@
 import { Flex } from "@/styles/container";
-import { outlinedIcons } from "@/styles/icons";
+import { outlinedIcons } from "@/styles/images";
 import styled from "styled-components";
 import { Palette } from "@/styles/palette";
 import { useState } from "react";

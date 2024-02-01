@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { outlinedIcons } from "@/styles/icons";
+import { outlinedIcons } from "@/styles/images";
 import { Link } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
 import { navbarRemHeight } from "@/styles/layout-measurements";

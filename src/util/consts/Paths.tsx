@@ -9,6 +9,7 @@ enum Paths {
     JOIN = '/join', 
     JOININFO = '/joininfo', 
     JOINPROFILEMESSAGE = '/joinprofilemessage',
+    JOINKEYWORDS = '/joinkeywords',
 };
 
 export default Paths;

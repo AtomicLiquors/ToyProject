@@ -1,5 +1,5 @@
 import ProfileImg from "@/common/ProfileImg";
-import LabledInput from "@/common/gadgets/Input";
+import LabeledInput from "@/common/gadgets/LabeledInput";
 import Page from "@/common/layout/Page";
 import PageBody from "@/common/layout/PageBody";
 import PageHeader from "@/common/layout/PageHeader";
@@ -20,9 +20,9 @@ const ProfileEdit = () => {
             </div>
           </div>
           <Flex $column $center style={{ gap: "1.6rem" }}>
-            <LabledInput stretch label={"닉네임"} />
-            <LabledInput stretch label={"생년월일"} />
-            <LabledInput stretch label={"성별"} />
+            <LabeledInput stretch label={"닉네임"} />
+            <LabeledInput stretch label={"생년월일"} />
+            <LabeledInput stretch label={"성별"} />
           </Flex>
         </Flex>
       </PageBody>

@@ -3,7 +3,7 @@ import SwipeTab from "@/common/gadgets/SwipeTab";
 import { Flex } from "@/styles/container";
 import styled from "styled-components";
 
-import { marginTop as $marginTop } from "@/common/layout/PageHeader";
+import { pageHeaderMargin as $marginTop  } from "@/styles/layout-measurements";
 import FollowingTabItem from "./FollowingTabItem";
 
 

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { clearDefault } from "@/styles/clear-default";
+import Label from "@/common/gadgets/Label";
 
 interface InputProps {
   placeholder?: string;
@@ -18,7 +19,7 @@ interface InputStyleProps {
   $rounded?: boolean;
 }
 
-const LabledInput: React.FC<InputProps> = ({
+const LabeledInput: React.FC<InputProps> = ({
   placeholder,
   stretch,
   label,
@@ -30,12 +31,12 @@ const LabledInput: React.FC<InputProps> = ({
     <S.InputContainer $stretch={stretch} $height={height} $textAreaHeight={textAreaHeight} $rounded={rounded}>
       {textAreaHeight ? (
         <>
-          {label ? <S.InputLabel>{label}</S.InputLabel> : <></>}
+          {label ? <Label text={label}/> : <></>}
           <S.TextArea placeholder={placeholder} />
         </>
       ) : (
         <S.GridLayout>          
-          {label ? <S.InputLabel>{label}</S.InputLabel> : <></>}
+          {label ? <Label text={label}/> : <></>}
           <S.Input placeholder={placeholder} />
         </S.GridLayout>
       )}
@@ -48,12 +49,6 @@ const S = {
     display: grid;
     grid-template-columns: 25% 75%; 
     align-items: center;
-  `,
-
-  InputLabel: styled.div`
-    font-weight: bold;
-    width: 100%;
-    text-align: left;
   `,
   InputContainer: styled.div<InputStyleProps>`
     width: ${(props) => (props.$stretch ? "100%" : "auto")};
@@ -85,4 +80,4 @@ const S = {
   `,
 };
 
-export default LabledInput;
+export default LabeledInput;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Gallery from "@/common/Gallery";
 import { clearDefault } from "@/styles/clear-default";
 import { Flex } from "@/styles/container";
-import { outlinedIcons } from "@/styles/icons";
+import { outlinedIcons } from "@/styles/images";
 
 const Search = () => {
   return (
@@ -35,6 +35,7 @@ const S = {
     padding: 0.4rem;
     width: 100%;
     height: 3rem;
+    box-sizing: border-box;
     border-radius: 1rem;
     background: gray;
   `,

@@ -10,6 +10,7 @@ import Search from "@/pages/search/Search";
 import NewPost from "@/pages/newpost/NewPost";
 import ProfileEdit from "@/pages/profile/ProfileEdit";
 import Notifications from "@/pages/notifications/Notifications";
+import JoinKeywords from "./join/JoinKeywords";
 
 const Pages = {
     Landing: Landing,
@@ -18,6 +19,7 @@ const Pages = {
     Join: Join,
     JoinInfo: JoinInfo,
     JoinProfileMessage: JoinProfileMessage,
+    JoinKeywords: JoinKeywords,
     Profile: Profile,
     Search: Search,
     NewPost: NewPost,

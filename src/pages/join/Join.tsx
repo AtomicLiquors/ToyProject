@@ -12,8 +12,8 @@ const Join: React.FC = () => {
   const { isOpen, open, close } = modalManager();
 
   return (
-    <S.Container $column $center>
-    
+    <S.Container $column $center >
+
       <Modal isOpen={isOpen} close={close}/>
       <PageHeader backlink={Paths.LANDING}/>
       <h1>Temp Logo</h1>

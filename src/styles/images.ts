@@ -6,6 +6,7 @@ import back from '/images/icons/outlined/back.png';
 import comments from '/images/icons/outlined/comments.png';
 import bell from '/images/icons/outlined/bell.png';
 import photo from '/images/icons/tile/add_photo.svg';
+import main from '/images/photo/main.png';
 
 export const outlinedIcons = {
     home: home,
@@ -19,4 +20,8 @@ export const outlinedIcons = {
 
 export const tiles = {
     photo: photo,
+}
+
+export const photos = {
+    main: main,
 }
