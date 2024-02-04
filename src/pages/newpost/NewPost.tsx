@@ -21,10 +21,10 @@ const NewPost = () => {
           textAreaHeight={2}
           placeholder={"사진에 대한 설명을 추가해 주세요."}
         />
-
+        <Flex $column $alignStart style={{width: '100%', gap: '0.4rem'}}>
         <Label text={"태그"}/>
         <TagInput/>
-
+        </Flex>
         <Button stretch text="등록"/>
       </S.Form>
     </S.Container>
