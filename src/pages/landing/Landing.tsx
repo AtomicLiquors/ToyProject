@@ -7,9 +7,13 @@ import { Link } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
 import { photos } from "@/styles/images";
 import { Palette } from "@/styles/palette";
+import { getPosts, post } from "@/api/post";
 
-const Landing: React.FC = () => {
+const Landing = () => {
   const { isOpen, open, close } = modalManager();
+
+  post();
+  const data:any = getPosts(); 
 
   return (
     <S.Container $bg={photos.main} $color={Palette.WHITE}>
@@ -23,6 +27,8 @@ const Landing: React.FC = () => {
           다람쥐 헌 쳇바퀴에 타고파.
           <br />
           다람쥐 헌 쳇바퀴에 타고파.
+          <br/>
+          {data ? data.data : ""};
         </p>
       </Flex>
       
