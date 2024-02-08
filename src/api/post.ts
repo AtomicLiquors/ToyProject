@@ -26,7 +26,6 @@ export const post = async () => {
     .catch((error: AxiosError) => {
         if (error.response) {
             console.error('Server responded with status:', error.response.status);
-            //console.error('Response data:', error.response.data);
         } else if (error.request) {
             console.error('No response received from server');
         } else {
