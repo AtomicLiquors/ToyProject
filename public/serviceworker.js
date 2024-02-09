@@ -18,6 +18,7 @@ self.addEventListener("install", (event) => {
 // Listen for requests
 self.addEventListener("fetch", (event) => {
     const { request } = event;
+    console.log(request.url);
   if (request.url.startsWith(END_POINT)) {
     event.respondWith(
       fetch(request)
@@ -32,9 +33,9 @@ self.addEventListener("fetch", (event) => {
             return response;
           });
         })
-        .catch(() => {
-          // Handle API request failure
-          return new Response("API request failed", { status: 500 });
+        .catch((response) => {
+          // Handle API request failures
+          return new Response("API request failed", response);
         })
     );
   } else {

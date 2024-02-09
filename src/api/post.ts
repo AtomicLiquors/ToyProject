@@ -3,7 +3,14 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 /* 아래 코드 해석이 되나? */
 
 const snsURL = "http://localhost:8080/api/";
-const sampleUser = "oauth_id_1";
+
+const config = {
+  headers: {
+    'Content-Type': 'multipart/form-data'
+  }
+};
+
+console.log(config);
 
 export const getPosts = async () => {
   const { data } = await axios.get(snsURL + "posts/search?keyword=2kooong2");
@@ -12,16 +19,23 @@ export const getPosts = async () => {
   return data;
 };
 
-export const post = async () => {
-  axios
-    .post(snsURL + "posts/", {
-      userId: sampleUser,
-      content: "sample content",
-      images: null,
-    })
+
+
+export const post = async (event: any) => {
+  console.log(event);
+   const files = event.target.files;
+   console.log(files);
+
+  const formData = new FormData();
+  formData.append("userId", "1");
+  formData.append("content", "sample content");
+  for (let i = 0; i < files.length; i++) {
+    formData.append("images", files[i]);
+  }  axios
+    .post(snsURL + "posts", formData
+    , config)
     .then((response: AxiosResponse) => {
-      console.log("POST success");
-      console.log(response.data);
+        console.log("POST Success: " + response.data);
     })
     .catch((error: AxiosError) => {
         if (error.response) {
