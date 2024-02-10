@@ -32,9 +32,11 @@ export const post = async (content:string, files:FileList) => {
     .post(snsURL + "posts", formData
     , config)
     .then((response: AxiosResponse) => {
-        console.log("POST Success: " + response.data);
+        return response;
     })
     .catch((error: AxiosError) => {
+        return error;
+        /*
         if (error.response) {
             console.error('Server responded with status:', error.response.status);
         } else if (error.request) {
@@ -42,5 +44,6 @@ export const post = async (content:string, files:FileList) => {
         } else {
             console.error('Error setting up the request:', error.message);
         }
+        */
     });
 };

@@ -39,10 +39,11 @@ const JoinInfo: React.FC = () => {
           $center
           style={{ borderTop: "1px solid #ccc", padding: "1rem" }}
         >
-          <LabeledInput stretch label={"프로필 메시지"} textAreaHeight={1} />
+          <LabeledInput stretch label={"프로필 메시지"} textarea height={8} />
 
-          <Button onClick={() => navigate(Paths.JOINKEYWORDS)} text={"완료"} stretch />
+          
         </S.Block>
+        <Button onClick={() => navigate(Paths.JOINKEYWORDS)} text={"완료"} stretch />
       </PageBody>
     </Page>
   );
