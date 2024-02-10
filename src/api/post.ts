@@ -21,14 +21,11 @@ export const getPosts = async () => {
 
 
 
-export const post = async (event: any) => {
-  console.log(event);
-   const files = event.target.files;
-   console.log(files);
+export const post = async (content:string, files:FileList) => {
 
   const formData = new FormData();
   formData.append("userId", "1");
-  formData.append("content", "sample content");
+  formData.append("content", content);
   for (let i = 0; i < files.length; i++) {
     formData.append("images", files[i]);
   }  axios

@@ -5,17 +5,36 @@ import { tiles } from "@/styles/images";
 import Button from "@/common/gadgets/Button";
 import Label from "@/common/gadgets/Label";
 import TagInput from "@/common/gadgets/TagInput";
+import { post } from "@/api/post";
+import { useRef } from "react";
 
 const NewPost = () => {
+
+  const imageRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLInputElement>(null);
+
+  const handleUploadTileClick = () => {
+    imageRef.current?.click();
+  };
+
+  const handlePostClick = () => {
+    const files = imageRef.current?.files;
+    const content = contentRef.current?.value;
+  post(content!, files!);
+  }
+
+
   return (
     <S.Container $center >
       <S.Form $center $column style={{maxWidth: "256px"}}>
-        <S.ImageUploadTile $center $column>
+        <input style={{display: "none"}} type="file" multiple ref={imageRef}/>
+        <S.ImageUploadTile $center $column onClick={handleUploadTileClick}>  
           <img src={tiles.photo} width={"50%"} style={{opacity: 0.3}}/>
           <div>사진을 첨부해 주세요.</div>
         </S.ImageUploadTile>
 
         <LabeledInput
+          ref={contentRef}
           label={"내용"}
           stretch
           textAreaHeight={2}
@@ -25,7 +44,7 @@ const NewPost = () => {
         <Label text={"태그"}/>
         <TagInput/>
         </Flex>
-        <Button stretch text="등록"/>
+        <Button stretch text="등록" onClick={handlePostClick}/>
       </S.Form>
     </S.Container>
   );
@@ -46,6 +65,7 @@ const S = {
   `,
 
   Form: styled(Flex)`
+    max-width: 256px;
     height: 100%;
     width: 100%;
     gap: 3rem;

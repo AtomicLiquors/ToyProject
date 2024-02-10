@@ -1,4 +1,4 @@
-import React from "react";
+import React, {RefObject} from "react";
 import styled from "styled-components";
 import { clearDefault } from "@/styles/clear-default";
 import Label from "@/common/gadgets/Label";
@@ -10,6 +10,7 @@ interface InputProps {
   stretch?: boolean;
   height?: number;
   rounded?: boolean;
+  ref?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
 }
 
 interface InputStyleProps {
@@ -20,6 +21,7 @@ interface InputStyleProps {
 }
 
 const LabeledInput: React.FC<InputProps> = ({
+  ref,
   placeholder,
   stretch,
   label,
@@ -32,12 +34,12 @@ const LabeledInput: React.FC<InputProps> = ({
       {textAreaHeight ? (
         <>
           {label ? <Label text={label}/> : <></>}
-          <S.TextArea placeholder={placeholder} />
+          <S.TextArea ref={ref as RefObject<HTMLTextAreaElement>} placeholder={placeholder} />
         </>
       ) : (
         <S.GridLayout>          
           {label ? <Label text={label}/> : <></>}
-          <S.Input placeholder={placeholder} />
+          <S.Input ref={ref as RefObject<HTMLInputElement>} placeholder={placeholder} />
         </S.GridLayout>
       )}
     </S.InputContainer>

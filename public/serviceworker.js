@@ -5,7 +5,6 @@ const self = this;
 
 const END_POINT = "http://localhost:8080";
 
-// Install Service Worker
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -15,7 +14,6 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Listen for requests
 self.addEventListener("fetch", (event) => {
     const { request } = event;
     console.log(request.url);

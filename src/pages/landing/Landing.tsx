@@ -7,21 +7,16 @@ import { Link } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
 import { photos } from "@/styles/images";
 import { Palette } from "@/styles/palette";
-import { post } from "@/api/post";
-import { useRef } from "react";
 
 const Landing = () => {
-  const imageRef = useRef(null);
-  const { isOpen, open, close } = modalManager();
 
-  //const data:any = getPosts(); 
+  const { isOpen, open, close } = modalManager();
 
   return (
     <S.Container $bg={photos.main} $color={Palette.WHITE}>
       <S.DarkLayer $column $center >
       <Modal isOpen={isOpen} close={close} />
       <h1>Temp Logo</h1>
-      <input type="file" ref={imageRef} onChange={(e) => post(e)}/>
       <Flex $column $center style={{}}>
         <p>
           소개 페이지 문구입니다.
