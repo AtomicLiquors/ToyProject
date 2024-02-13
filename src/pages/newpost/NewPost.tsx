@@ -7,11 +7,13 @@ import Label from "@/common/gadgets/Label";
 import TagInput from "@/common/gadgets/TagInput";
 import { post } from "@/api/post";
 import { useRef, useState } from "react";
+//import { AxiosError } from "axios";
 
 const NewPost = () => {
   const [previewImg, setPreviewImg] = useState(tiles.photo);
+  const [postError, setPostError] = useState(false);
   const imageRef = useRef<HTMLInputElement>(null);
-  const contentRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
   const handleUploadTileClick = () => {
     imageRef.current?.click();
@@ -20,16 +22,15 @@ const NewPost = () => {
   const handlePostClick = async () => {
     const files = imageRef.current?.files;
     const content = contentRef.current?.value;
-    await post(content!, files!);
+    const result = await post(content!, files!);
+    console.log(result);
+    setPostError(false);
   }
 
   const handleImageChange = () => {
     const files = imageRef.current?.files;
-    console.log(files);
-
     
     for(let idx in files){
-      console.log(idx);
       if(idx === '0'){
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -73,6 +74,7 @@ const NewPost = () => {
         <Label text={"태그"}/>
         <TagInput/>
         </Flex>
+        { postError ? <div>서버와의 통신이 원활하지 않습니다.</div> : <></>}
         <Button stretch text="등록" onClick={handlePostClick}/>
       </S.Form>
     </S.Container>

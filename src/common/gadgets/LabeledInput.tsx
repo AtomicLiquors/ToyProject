@@ -1,7 +1,9 @@
-import React, { RefObject} from "react";
+import { forwardRef, RefObject} from "react";
 import styled from "styled-components";
 import { clearDefault } from "@/styles/clear-default";
 import Label from "@/common/gadgets/Label";
+
+type HTMLInputTextAreaElement = HTMLInputElement | HTMLTextAreaElement;
 
 interface InputProps {
   placeholder?: string;
@@ -10,7 +12,6 @@ interface InputProps {
   stretch?: boolean;
   height?: number;
   rounded?: boolean;
-  ref?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
 }
 
 interface InputStyleProps {
@@ -20,31 +21,30 @@ interface InputStyleProps {
   $rounded?: boolean;
 }
 
-const LabeledInput: React.FC<InputProps> = ({
-  ref,
+const LabeledInput = forwardRef<HTMLInputTextAreaElement, InputProps>(({
   placeholder,
   stretch,
   label,
   height,
   textarea,
   rounded
-}) => {
+}, ref) => {
   return (
     <S.InputContainer $stretch={stretch} $height={height} $textarea={textarea} $rounded={rounded}>
       {textarea ? (
         <div style={{height: "100%"}}>
-          {label ? <Label text={label}/> : <></>}
+          {label && <Label text={label}/>}
           <S.TextArea $textarea={textarea} ref={ref as RefObject<HTMLTextAreaElement>} placeholder={placeholder} />
         </div>
       ) : (
         <S.GridLayout>          
-          {label ? <Label text={label}/> : <></>}
+          {label && <Label text={label}/>}
           <S.Input ref={ref as RefObject<HTMLInputElement>} placeholder={placeholder} />
         </S.GridLayout>
       )}
     </S.InputContainer>
   );
-};
+});
 
 const S = {
   GridLayout: styled.div`

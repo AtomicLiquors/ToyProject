@@ -10,12 +10,8 @@ const config = {
   }
 };
 
-console.log(config);
-
 export const getPosts = async () => {
   const { data } = await axios.get(snsURL + "posts/search?keyword=2kooong2");
-  console.log("success");
-  console.log(data);
   return data;
 };
 
