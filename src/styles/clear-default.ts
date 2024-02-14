@@ -11,6 +11,15 @@ const input: string =
   "font-family: inherit;" +  /* Inherit font family */
   "font-size: inherit;" /* Inherit font size */
 
+const image: string = 
+    "user-drag: none;" +
+    "-webkit-user-drag: none;"+
+    "user-select: none;"+
+    "-moz-user-select: none;"+
+    "-webkit-user-select: none;"+
+    "-ms-user-select: none;"
+
 export const clearDefault = {
   input: input,
+  image: image,
 };

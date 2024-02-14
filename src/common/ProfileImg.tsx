@@ -2,8 +2,7 @@ import { Flex } from '@/styles/container';
 import {outlinedIcons} from '@/styles/images'
 import { profileColorGenerator } from '@/util/helpers/colorGenerator';
 import styled from "styled-components";
-// width, img src
-
+import { clearDefault } from '@/styles/clear-default';
 interface ImgProps {
     size?: number;
     username?: string;
@@ -20,6 +19,7 @@ const ProfileImg: React.FC<ImgProps> = ({size=3, username = '2kooong2'}) => {
 
 const S = {
     Profile: styled.img<{$username: string, $size: number}>`
+        ${clearDefault.image}
         border: 3.2px solid #fff;
         border-radius: 100%;
         width: ${props => props.$size}rem;
