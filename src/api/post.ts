@@ -1,7 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-/* 아래 코드 해석이 되나? */
-
 const snsURL = "http://localhost:8080/api/";
 
 const config = {
@@ -32,14 +30,5 @@ export const post = async (content:string, files:FileList) => {
     })
     .catch((error: AxiosError) => {
         return error;
-        /*
-        if (error.response) {
-            console.error('Server responded with status:', error.response.status);
-        } else if (error.request) {
-            console.error('No response received from server');
-        } else {
-            console.error('Error setting up the request:', error.message);
-        }
-        */
     });
 };
