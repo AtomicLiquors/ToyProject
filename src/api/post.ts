@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-const snsURL = "http://localhost:8080/api/";
+const baseURL = "http://localhost:8080/api/";
 
 const config = {
   headers: {
@@ -8,8 +8,36 @@ const config = {
   }
 };
 
+const postRequest = axios.create({
+  baseURL: baseURL,
+})
+
+postRequest.interceptors.request.use(
+  (request) => {
+    console.log(request);
+    return request;
+  },
+  (error) => {
+    console.log(error.response);
+    return Promise.reject(error);
+  }
+);
+
+postRequest.interceptors.response.use(
+  (response) => {
+    console.log(response);
+    return response;
+  },
+  (error) => {
+    console.log(error.response);
+    return Promise.reject(error);
+  }
+);
+
+
 export const getPosts = async () => {
-  const { data } = await axios.get(snsURL + "posts/search?keyword=2kooong2");
+  //const { data } = await axios.get(baseURL + "posts/search?keyword=2kooong2");
+  const { data } = await postRequest("posts/search?keyword=2kooong2");
   return data;
 };
 
@@ -23,7 +51,7 @@ export const post = async (content:string, files:FileList) => {
   for (let i = 0; i < files.length; i++) {
     formData.append("images", files[i]);
   }  axios
-    .post(snsURL + "posts", formData
+    .post(baseURL + "posts", formData
     , config)
     .then((response: AxiosResponse) => {
         return response;
