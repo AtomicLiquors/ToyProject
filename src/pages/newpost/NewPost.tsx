@@ -22,8 +22,8 @@ const NewPost = () => {
   const handlePostClick = async () => {
     const files = imageRef.current?.files;
     const content = contentRef.current?.value;
-    const result = await post(content!, files!);
-    console.log(result);
+    await post(content!, files!);
+    //console.log(result);
     setPostError(false);
   }
 
