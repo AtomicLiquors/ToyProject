@@ -2,7 +2,6 @@ import { Flex } from '@/styles/container';
 import {outlinedIcons} from '@/styles/images'
 import { profileColorGenerator } from '@/util/helpers/colorGenerator';
 import styled from "styled-components";
-// width, img src
 
 interface ImgProps {
     size?: number;
