@@ -3,7 +3,8 @@ const urlsToCache = ["index.html", "offline.html"];
 
 const self = this;
 
-const END_POINT = "http://localhost:8080";
+const CLIENT_END_POINT = "http://localhost:5173";
+const SERVER_END_POINT = "http://localhost:8080";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -15,9 +16,11 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-    const { request } = event;
-    console.log(request.url);
-  if (request.url.startsWith(END_POINT)) {
+  const { request } = event;
+  console.log(request.url);
+  console.log(SERVER_END_POINT);
+  console.log(request.url.startsWith(SERVER_END_POINT));
+  if (request.url.startsWith(SERVER_END_POINT)) {
     event.respondWith(
       fetch(request)
         .then((response) => {
@@ -27,12 +30,25 @@ self.addEventListener("fetch", (event) => {
           }
           // Cache and return the response
           return caches.open(CACHE_NAME).then((cache) => {
+            console.log("Success : ");
+            console.log(response);
             cache.put(request, response.clone());
             return response;
           });
         })
         .catch((response) => {
-          // Handle API request failures
+          console.log("Failure: ");
+
+          const responseData = {
+            url: event.request.url,
+            status: response.status,
+          };
+
+          self.clients.matchAll().then((clients) => {
+            clients.forEach((client) => {
+              client.postMessage(responseData);
+            });
+          });
           return new Response("API request failed", response);
         })
     );

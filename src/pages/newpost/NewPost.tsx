@@ -6,14 +6,27 @@ import Button from "@/common/gadgets/Button";
 import Label from "@/common/gadgets/Label";
 import TagInput from "@/common/gadgets/TagInput";
 import { post } from "@/api/post";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 //import { AxiosError } from "axios";
+
+const sw = navigator.serviceWorker;
 
 const NewPost = () => {
   const [previewImg, setPreviewImg] = useState(tiles.photo);
-  const [postError, setPostError] = useState(false);
+  const [postError, setPostError] = useState("");
   const imageRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if(sw){
+      sw.addEventListener('message', event => {
+        if (event.source && event.data) {
+          console.log(event.data);
+          setPostError("wwww");
+        }
+      });
+    }
+  }, []);
 
   const handleUploadTileClick = () => {
     imageRef.current?.click();
@@ -23,8 +36,7 @@ const NewPost = () => {
     const files = imageRef.current?.files;
     const content = contentRef.current?.value;
     await post(content!, files!);
-    //console.log(result);
-    setPostError(false);
+  //  setPostError(null);
   }
 
   const handleImageChange = () => {
@@ -103,3 +115,4 @@ const S = {
   `,
 };
 export default NewPost;
+

@@ -14,7 +14,7 @@ const config = {
   },
 };
 
-export const post = async (content: string, files: FileList) => {
+export const post = async (content: string, files: FileList): Promise<AxiosResponse | AxiosError> => {
   const formData = new FormData();
   formData.append("userId", "1");
   formData.append("content", content);
@@ -22,7 +22,7 @@ export const post = async (content: string, files: FileList) => {
     formData.append("images", file);
   }
 
-  axios
+  const response = await axios
     .post(baseURL + "posts", formData, config)
     .then((response: AxiosResponse) => {
       return response;
@@ -30,4 +30,6 @@ export const post = async (content: string, files: FileList) => {
     .catch((error: AxiosError) => {
       return error;
     });
+  
+    return response;
 };
