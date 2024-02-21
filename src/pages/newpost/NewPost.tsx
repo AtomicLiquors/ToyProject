@@ -7,6 +7,7 @@ import Label from "@/common/gadgets/Label";
 import TagInput from "@/common/gadgets/TagInput";
 import { post } from "@/api/post";
 import { useRef, useState, useEffect } from "react";
+import ErrorMsg from "@/common/gadgets/ErrorMsg";
 //import { AxiosError } from "axios";
 
 const sw = navigator.serviceWorker;
@@ -51,17 +52,6 @@ const NewPost = () => {
         reader.readAsDataURL(files[idx]);
       }
     }
-    /*
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          document.getElementById('thumbnail').setAttribute('src', e.target.result);
-        }
-        reader.readAsDataURL(file);
-      } else {
-        document.getElementById('thumbnail').setAttribute('src', '#');
-      }
-     */
   }
 
 
@@ -86,7 +76,7 @@ const NewPost = () => {
         <Label text={"태그"}/>
         <TagInput/>
         </Flex>
-        { postError ? <div>서버와의 통신이 원활하지 않습니다.</div> : <></>}
+        { postError ? <ErrorMsg text={'서버와의 통신이 원활하지 않습니다.'}/> : <></>}
         <Button stretch text="등록" onClick={handlePostClick}/>
       </S.Form>
     </S.Container>
