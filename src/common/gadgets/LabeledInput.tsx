@@ -6,6 +6,7 @@ import Label from "@/common/gadgets/Label";
 type HTMLInputTextAreaElement = HTMLInputElement | HTMLTextAreaElement;
 
 interface InputProps {
+  id?: string;
   placeholder?: string;
   label?: string;
   textarea?: boolean;
@@ -22,6 +23,7 @@ interface InputStyleProps {
 }
 
 const LabeledInput = forwardRef<HTMLInputTextAreaElement, InputProps>(({
+  id,
   placeholder,
   stretch,
   label,
@@ -39,7 +41,7 @@ const LabeledInput = forwardRef<HTMLInputTextAreaElement, InputProps>(({
       ) : (
         <S.GridLayout>          
           {label && <Label text={label}/>}
-          <S.Input ref={ref as RefObject<HTMLInputElement>} placeholder={placeholder} />
+          <S.Input id={id} ref={ref as RefObject<HTMLInputElement>} placeholder={placeholder} />
         </S.GridLayout>
       )}
     </S.InputContainer>

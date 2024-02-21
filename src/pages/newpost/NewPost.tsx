@@ -12,7 +12,7 @@ import ErrorMsg from "@/common/gadgets/ErrorMsg";
 const sw = navigator.serviceWorker;
 
 const NewPost = () => {
-  const [previewImg, setPreviewImg] = useState(tiles.photo);
+  const [previewImages, setPreviewImages] = useState<string[]>([]);
   const [isFetching, setIsFetching] = useState(false);
   const [postResponse, setPostResponse] = useState("");
   const imageRef = useRef<HTMLInputElement>(null);
@@ -46,30 +46,37 @@ const NewPost = () => {
   }
 
   const handleImageChange = () => {
-    const files = imageRef.current?.files;
-    
-    for(let idx in files){
-      if(idx === '0'){
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          setPreviewImg(e.target?.result);
-        }
-        reader.readAsDataURL(files[idx]);
-      }
+    const files: FileList = imageRef.current?.files || new FileList();
+    const urls: string[] = [];
+    for(const file of files){
+      console.log(file);
+      const blob = new Blob([file], {type:file.type});
+      const url = URL.createObjectURL(blob);
+      urls.push(url);
     }
+    setPreviewImages([...urls]);
   }
 
 
   return (
     <S.Container $center >
       <S.Form $center $column style={{maxWidth: "256px"}}>
-        <input style={{display: "none"}} type="file" multiple ref={imageRef} onChange={handleImageChange}/>
-        <S.ImageUploadTile $center $column onClick={handleUploadTileClick}>  
-          <img src={previewImg} width={"50%"} style={{opacity: 0.3}}/>
+        <input id="images" style={{display: "none"}} type="file" multiple ref={imageRef} onChange={handleImageChange}/>
+        <S.ImageUplaodPanel>
+        <S.EmptyImageTile $center $column onClick={handleUploadTileClick}>  
+          <img src={tiles.photo} width={"50%"} style={{opacity: 0.3}}/>
           <div>사진을 첨부해 주세요.</div>
-        </S.ImageUploadTile>
+        </S.EmptyImageTile>
+        <div>
+        {previewImages.map((image, index) => (
+          <img key={index} src={image}/>
+        ))}
+        </div>
+        </S.ImageUplaodPanel>
+        
 
         <LabeledInput
+          id="content"
           ref={contentRef}
           label={"내용"}
           stretch
@@ -82,7 +89,7 @@ const NewPost = () => {
         <TagInput/>
         </Flex>
         { isFetching ? <>등록 중...</> : <></>}
-        { postResponse ? <ErrorMsg text={postResponse}/> : <></>}
+        { postResponse ? <ErrorMsg text={postResponse + ' : 요청 중 에러가 발생했습니다.'}/> : <></>}
         <Button stretch text="등록" onClick={handlePostClick}/>
       </S.Form>
     </S.Container>
@@ -97,8 +104,12 @@ const S = {
     background: white;
   `,
 
-  ImageUploadTile: styled(Flex)`
+  ImageUplaodPanel: styled.div`
     height: 256px;
+  `,
+
+  EmptyImageTile: styled(Flex)`
+    height: 100%;
     border-radius: 1rem;
     border: 3px dashed #ccc;
   `,
