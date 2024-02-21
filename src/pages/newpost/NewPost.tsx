@@ -8,13 +8,13 @@ import TagInput from "@/common/gadgets/TagInput";
 import { post } from "@/api/post";
 import { useRef, useState, useEffect } from "react";
 import ErrorMsg from "@/common/gadgets/ErrorMsg";
-//import { AxiosError } from "axios";
 
 const sw = navigator.serviceWorker;
 
 const NewPost = () => {
   const [previewImg, setPreviewImg] = useState(tiles.photo);
-  const [postError, setPostError] = useState("");
+  const [isFetching, setIsFetching] = useState(false);
+  const [postResponse, setPostResponse] = useState("");
   const imageRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
@@ -22,8 +22,9 @@ const NewPost = () => {
     if(sw){
       sw.addEventListener('message', event => {
         if (event.source && event.data) {
+          setIsFetching(false);
           console.log(event.data);
-          setPostError("wwww");
+          setPostResponse("서버와의 통신이 원활하지 않습니다.");
         }
       });
     }
@@ -34,9 +35,12 @@ const NewPost = () => {
   };
 
   const handlePostClick = async () => {
+    setIsFetching(true);
     const files = imageRef.current?.files;
     const content = contentRef.current?.value;
     await post(content!, files!);
+    //console.log("NewPost Report : ");
+    //console.log(result);
   //  setPostError(null);
   }
 
@@ -76,7 +80,8 @@ const NewPost = () => {
         <Label text={"태그"}/>
         <TagInput/>
         </Flex>
-        { postError ? <ErrorMsg text={'서버와의 통신이 원활하지 않습니다.'}/> : <></>}
+        { isFetching ? <>등록 중...</> : <></>}
+        { postResponse ? <ErrorMsg text={postResponse}/> : <></>}
         <Button stretch text="등록" onClick={handlePostClick}/>
       </S.Form>
     </S.Container>
