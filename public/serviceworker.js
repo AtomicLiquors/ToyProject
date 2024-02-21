@@ -22,19 +22,19 @@ self.addEventListener("fetch", (event) => {
       fetch(request)
         .then(async (response) => {
           // Check if the response is valid 
-          handleErrors(response);
+          await handleErrors(response);
           // Cache and return the response
           console.log("Success");
           if (request.method === 'GET') {
             const cache = await caches.open(CACHE_NAME);
             cache.put(request, response.clone());
           }
+          postMessageToClient(response.status);
           return response;
         })
         .catch((error) => {
-          console.log("Failure: ");
-          postMessageToClient(error);
-          return new Response("API request failed", error);
+          postMessageToClient(error.message);
+          return new Response(`API request failed : ${error.message}`);
         })
     );
   } else {
@@ -64,11 +64,11 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-const handleErrors = (response) => {
+const handleErrors = async (response) => {
   if(!response.ok){
-    console.log(response);
-    console.log(response.status);
-    throw new Error("API Request failed");
+    const responseData = await response.json();
+    console.log(responseData);
+    throw new Error(response.status);
   }
 }
 

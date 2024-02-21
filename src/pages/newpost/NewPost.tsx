@@ -23,8 +23,9 @@ const NewPost = () => {
       sw.addEventListener('message', event => {
         if (event.source && event.data) {
           setIsFetching(false);
-          console.log(event.data);
-          setPostResponse("서버와의 통신이 원활하지 않습니다.");
+          console.log((event.data));
+          //To-Do : status 변환해서 적절한 반응으로 바꾸기(페이지 이동, 에러 블록 표시(사용자 측 / 서버 측))
+          setPostResponse(event.data);
         }
       });
     }
