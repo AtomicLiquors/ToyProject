@@ -6,7 +6,7 @@ import Label from "@/common/gadgets/Label";
 type HTMLInputTextAreaElement = HTMLInputElement | HTMLTextAreaElement;
 
 interface InputProps {
-  id?: string;
+  id: string;
   placeholder?: string;
   label?: string;
   textarea?: boolean;

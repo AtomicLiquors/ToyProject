@@ -30,16 +30,16 @@ const JoinInfo: React.FC = () => {
           $center
           style={{ borderTop: "1px solid #ccc", padding: "1rem", gap: "1rem" }}
         >
-          <LabeledInput stretch label={"닉네임"} />
-          <LabeledInput stretch label={"생년월일"} />
-          <LabeledInput stretch label={"성별"} />
+          <LabeledInput id="nickname" stretch label={"닉네임"} />
+          <LabeledInput id="birthday" stretch label={"생년월일"} />
+          <LabeledInput id="gender" stretch label={"성별"} />
         </S.Block>
         <S.Block
           $column
           $center
           style={{ borderTop: "1px solid #ccc", padding: "1rem" }}
         >
-          <LabeledInput stretch label={"프로필 메시지"} textarea height={8} />
+          <LabeledInput id="profile_message" stretch label={"프로필 메시지"} textarea height={8} />
 
           
         </S.Block>
