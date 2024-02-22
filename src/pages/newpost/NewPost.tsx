@@ -39,16 +39,13 @@ const NewPost = () => {
   const handleRevertUploadClick = () => {
     // To-Do: Blob file들 release할 수 있나?
     setPreviewImages([]);
-  }
+  };
 
   const handlePostClick = async () => {
     setIsFetching(true);
     const files = imageRef.current?.files;
     const content = contentRef.current?.value;
     await post(content!, files!);
-    //console.log("NewPost Report : ");
-    //console.log(result);
-    //  setPostError(null);
   };
 
   const handleImageChange = () => {
@@ -65,21 +62,21 @@ const NewPost = () => {
   return (
     <S.Container $center>
       <S.Form $center $column>
-        <input
-          id="images"
-          style={{ display: "none" }}
-          type="file"
-          multiple
-          ref={imageRef}
-          onChange={handleImageChange}
-        />
-        <S.ImageUplaodPanel>
+        <S.ImageUploadPanel>
+          <input
+            id="images"
+            style={{ display: "none" }}
+            type="file"
+            multiple
+            ref={imageRef}
+            onChange={handleImageChange}
+          />
           {previewImages[0] ? (
-            <ImageSwiper previewImages={previewImages}/>
+            <ImageSwiper previewImages={previewImages} />
           ) : (
-            <EmptyImageTile onClick={handleUploadTileClick}/>
+            <EmptyImageTile onClick={handleUploadTileClick} />
           )}
-        </S.ImageUplaodPanel>
+        </S.ImageUploadPanel>
 
         <LabeledInput
           id="content"
@@ -114,7 +111,7 @@ const S = {
     background: white;
   `,
 
-  ImageUplaodPanel: styled.div`
+  ImageUploadPanel: styled.div`
     width: 100%;
     height: 256px;
   `,
