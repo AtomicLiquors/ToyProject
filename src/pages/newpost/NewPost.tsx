@@ -7,13 +7,11 @@ import TagInput from "@/common/gadgets/TagInput";
 import { post } from "@/api/post";
 import { useRef, useState, useEffect } from "react";
 import ErrorMsg from "@/common/gadgets/ErrorMsg";
-import ImageSwiper from "@/common/ImageSwiper";
-import EmptyImageTile from "@/common/EmptyImageTile";
+import ImageUploadPanel from "@/common/gadgets/ImageUploadPanel";
 
 const sw = navigator.serviceWorker;
 
 const NewPost = () => {
-  const [previewImages, setPreviewImages] = useState<string[]>([]);
   const [isFetching, setIsFetching] = useState(false);
   const [postResponse, setPostResponse] = useState("");
   const imageRef = useRef<HTMLInputElement>(null);
@@ -32,15 +30,6 @@ const NewPost = () => {
     }
   }, []);
 
-  const handleUploadTileClick = () => {
-    imageRef.current?.click();
-  };
-
-  const handleRevertUploadClick = () => {
-    // To-Do: Blob file들 release할 수 있나?
-    setPreviewImages([]);
-  };
-
   const handlePostClick = async () => {
     setIsFetching(true);
     const files = imageRef.current?.files;
@@ -48,35 +37,11 @@ const NewPost = () => {
     await post(content!, files!);
   };
 
-  const handleImageChange = () => {
-    const files: FileList = imageRef.current?.files || new FileList();
-    const urls: string[] = [];
-    for (const file of files) {
-      const blob = new Blob([file], { type: file.type });
-      const url = URL.createObjectURL(blob);
-      urls.push(url);
-    }
-    setPreviewImages([...urls]);
-  };
 
   return (
     <S.Container $center>
       <S.Form $center $column>
-        <S.ImageUploadPanel>
-          <input
-            id="images"
-            style={{ display: "none" }}
-            type="file"
-            multiple
-            ref={imageRef}
-            onChange={handleImageChange}
-          />
-          {previewImages[0] ? (
-            <ImageSwiper previewImages={previewImages} />
-          ) : (
-            <EmptyImageTile onClick={handleUploadTileClick} />
-          )}
-        </S.ImageUploadPanel>
+        <ImageUploadPanel ref={imageRef}/>
 
         <LabeledInput
           id="content"
