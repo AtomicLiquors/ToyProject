@@ -1,7 +1,6 @@
 import LabeledInput from "@/common/gadgets/LabeledInput";
 import { Flex } from "@/styles/container";
 import styled from "styled-components";
-import { tiles } from "@/styles/images";
 import Button from "@/common/gadgets/Button";
 import Label from "@/common/gadgets/Label";
 import TagInput from "@/common/gadgets/TagInput";
@@ -9,6 +8,7 @@ import { post } from "@/api/post";
 import { useRef, useState, useEffect } from "react";
 import ErrorMsg from "@/common/gadgets/ErrorMsg";
 import ImageSwiper from "@/common/ImageSwiper";
+import EmptyImageTile from "@/common/EmptyImageTile";
 
 const sw = navigator.serviceWorker;
 
@@ -36,6 +36,11 @@ const NewPost = () => {
     imageRef.current?.click();
   };
 
+  const handleRevertUploadClick = () => {
+    // To-Do: Blob file들 release할 수 있나?
+    setPreviewImages([]);
+  }
+
   const handlePostClick = async () => {
     setIsFetching(true);
     const files = imageRef.current?.files;
@@ -50,7 +55,6 @@ const NewPost = () => {
     const files: FileList = imageRef.current?.files || new FileList();
     const urls: string[] = [];
     for (const file of files) {
-      console.log(file);
       const blob = new Blob([file], { type: file.type });
       const url = URL.createObjectURL(blob);
       urls.push(url);
@@ -60,7 +64,7 @@ const NewPost = () => {
 
   return (
     <S.Container $center>
-      <S.Form $center $column style={{ maxWidth: "256px" }}>
+      <S.Form $center $column>
         <input
           id="images"
           style={{ display: "none" }}
@@ -73,14 +77,7 @@ const NewPost = () => {
           {previewImages[0] ? (
             <ImageSwiper previewImages={previewImages}/>
           ) : (
-            <S.EmptyImageTile $center $column onClick={handleUploadTileClick}>
-              <S.EmptyImage
-                src={tiles.photo}
-                width={"50%"}
-                style={{ opacity: 0.3 }}
-              />
-              <div>사진을 첨부해 주세요.</div>
-            </S.EmptyImageTile>
+            <EmptyImageTile onClick={handleUploadTileClick}/>
           )}
         </S.ImageUplaodPanel>
 
@@ -118,6 +115,7 @@ const S = {
   `,
 
   ImageUplaodPanel: styled.div`
+    width: 100%;
     height: 256px;
   `,
 
