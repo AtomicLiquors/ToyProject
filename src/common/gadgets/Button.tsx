@@ -12,17 +12,17 @@ interface ButtonProps {
 
 export enum ButtonThemeOption { BLUE = 'blue', WHITE = 'white' };
 
-interface OptionRequirement {
+interface ButtonOptionRequirement {
   background: string;
   color: string;
   border: string;
 }
 
-type OptionRequirements = {
-  [key in ButtonThemeOption]: OptionRequirement; 
+type ButtonOptionRequirements = {
+  [key in ButtonThemeOption]: ButtonOptionRequirement; 
 }
 
-const $themes: OptionRequirements = {
+const $themes: ButtonOptionRequirements = {
   blue : {
     background: Palette.BLUE,
     color: Palette.TEXT_IN_BLUE,
@@ -34,8 +34,6 @@ const $themes: OptionRequirements = {
     border: '1px solid #ccc',
   }
 }
-
-
 
 const Button: React.FC<ButtonProps> = ({text, stretch, minWidth, theme = ButtonThemeOption.BLUE, onClick}) => {
   return (

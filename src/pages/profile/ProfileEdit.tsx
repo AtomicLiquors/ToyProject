@@ -20,9 +20,9 @@ const ProfileEdit = () => {
             </div>
           </div>
           <Flex $column $center style={{ gap: "1.6rem" }}>
-            <LabeledInput stretch label={"닉네임"} />
-            <LabeledInput stretch label={"생년월일"} />
-            <LabeledInput stretch label={"성별"} />
+          <LabeledInput id="nickname" stretch label={"닉네임"} />
+          <LabeledInput id="birthday" stretch label={"생년월일"} />
+          <LabeledInput id="gender" stretch label={"성별"} />
           </Flex>
         </Flex>
       </PageBody>
