@@ -8,6 +8,8 @@ import { post } from "@/api/post";
 import { useRef, useState, useEffect } from "react";
 import ErrorMsg from "@/common/gadgets/ErrorMsg";
 import ImageUploadPanel from "@/common/gadgets/ImageUploadPanel/ImageUploadPanel";
+import { isStatusCodeOk } from "@/util/helpers/checkStatusCodeOk";
+import Page from "@/common/layout/Page";
 
 const sw = navigator.serviceWorker;
 
@@ -22,9 +24,11 @@ const NewPost = () => {
       sw.addEventListener("message", (event) => {
         if (event.source && event.data) {
           setIsFetching(false);
-          console.log(event.data);
-          //To-Do : status 변환해서 적절한 반응으로 바꾸기(페이지 이동, 에러 블록 표시(사용자 측 / 서버 측))
-          setPostResponse(event.data);
+          if (isStatusCodeOk(event.data)) {
+            setPostResponse("등록되었습니다.");
+          } else {
+            setPostResponse(event.data + " : 등록 중 에러가 발생했습니다.");
+          }
         }
       });
     }
@@ -37,11 +41,10 @@ const NewPost = () => {
     await post(content!, files!);
   };
 
-
   return (
-    <S.Container $center>
+    <Page $center>
       <S.Form $center $column>
-        <ImageUploadPanel ref={imageRef}/>
+        <ImageUploadPanel ref={imageRef} />
 
         <LabeledInput
           id="content"
@@ -52,33 +55,40 @@ const NewPost = () => {
           height={2}
           placeholder={"사진에 대한 설명을 추가해 주세요."}
         />
-        <Flex $column $alignStart style={{ width: "100%", gap: "0.4rem" }}>
+        <S.FormItem $column $alignStart>
           <Label text={"태그"} />
           <TagInput />
-        </Flex>
-        {isFetching ? <>등록 중...</> : <></>}
-        {postResponse ? (
-          <ErrorMsg text={postResponse + " : 요청 중 에러가 발생했습니다."} />
-        ) : (
-          <></>
-        )}
-        <Button stretch text="등록" onClick={handlePostClick} />
+        </S.FormItem>
+
+        <S.FormItem $column>
+          {isFetching ? <>등록 중...</> : <></>}
+          {postResponse ? <ErrorMsg text={postResponse} /> : <></>}
+          <Button stretch text="등록" onClick={handlePostClick} />
+        </S.FormItem>
       </S.Form>
-    </S.Container>
+    </Page>
   );
 };
 
 const S = {
-  Container: styled(Flex)`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: white;
-  `,
 
   ImageUploadPanel: styled.div`
     width: 100%;
     height: 256px;
+  `,
+
+  Form: styled(Flex)`
+    box-sizing: border-box;
+    max-width: 256px;
+    height: 100%;
+    width: 100%;
+    gap: 3rem;
+    overflow: scroll;
+  `,
+  
+  FormItem: styled(Flex)`
+    width: 100%;
+    gap: 1.4rem;
   `,
 
   EmptyImage: styled.img`
@@ -92,12 +102,5 @@ const S = {
     border: 3px dashed #ccc;
   `,
 
-  Form: styled(Flex)`
-    box-sizing: border-box;
-    max-width: 256px;
-    height: 100%;
-    width: 100%;
-    gap: 3rem;
-  `,
 };
 export default NewPost;

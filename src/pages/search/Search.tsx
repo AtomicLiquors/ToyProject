@@ -3,10 +3,11 @@ import Gallery from "@/common/Gallery";
 import { clearDefault } from "@/styles/clear-default";
 import { Flex } from "@/styles/container";
 import { outlinedIcons } from "@/styles/images";
+import Page from "@/common/layout/Page";
 
 const Search = () => {
   return (
-    <S.Container>
+    <Page>
       <S.InputTab>
         <S.InputContainer $center>
           <Flex $center style={{width: "3rem", paddingRight: "1rem"}}><img src={outlinedIcons.search}/></Flex>
@@ -14,19 +15,11 @@ const Search = () => {
         </S.InputContainer>
       </S.InputTab>
       <Gallery />
-    </S.Container>
+    </Page>
   );
 };
 
 const S = {
-  Container: styled.div`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: white;
-    overflow: scroll;
-  `,
-
   InputTab: styled(Flex)`
     padding: 1rem;
   `,
