@@ -29,7 +29,7 @@ self.addEventListener("fetch", (event) => {
             const cache = await caches.open(CACHE_NAME);
             cache.put(request, response.clone());
           }
-          postMessageToClient(response.status);
+          postMessageToClient(response.ok + " " + response.status);
           return response;
         })
         .catch((error) => {
