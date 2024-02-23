@@ -9,7 +9,7 @@ const TagInput = () => {
   const inputRef = useRef(null);
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if ((e.key === " " || e.key === "Enter") && !e.shiftKey) {
+    if ((e.key === " " || e.key === "Spacebar" || e.key === "Enter") && !e.shiftKey) {
       addTag();
       e.preventDefault();
     } else if (e.key === "Backspace") {
