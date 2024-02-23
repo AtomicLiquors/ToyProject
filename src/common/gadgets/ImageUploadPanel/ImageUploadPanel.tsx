@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import ImageSwiper from "@/common/ImageSwiper";
-import EmptyImageTile from "@/common/EmptyImageTile";
+import ImageSwiper from "@/common/gadgets/ImageUploadPanel/ImageSwiper";
+import EmptyImageTile from "@/common/gadgets/ImageUploadPanel/EmptyImageTile";
 import { RefObject, forwardRef, useState } from 'react';
 
 

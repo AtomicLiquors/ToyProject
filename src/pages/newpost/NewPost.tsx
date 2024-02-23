@@ -7,7 +7,7 @@ import TagInput from "@/common/gadgets/TagInput";
 import { post } from "@/api/post";
 import { useRef, useState, useEffect } from "react";
 import ErrorMsg from "@/common/gadgets/ErrorMsg";
-import ImageUploadPanel from "@/common/gadgets/ImageUploadPanel";
+import ImageUploadPanel from "@/common/gadgets/ImageUploadPanel/ImageUploadPanel";
 
 const sw = navigator.serviceWorker;
 
