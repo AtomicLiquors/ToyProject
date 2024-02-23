@@ -3,38 +3,36 @@ const urlsToCache = ["index.html", "offline.html"];
 
 const self = this;
 
-const END_POINT = "http://localhost:8080";
+const CLIENT_END_POINT = "http://localhost:5173";
+const SERVER_END_POINT = "http://localhost:8080";
 
-// Install Service Worker
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log(cache);
       return cache.addAll(urlsToCache);
     })
   );
 });
 
-// Listen for requests
 self.addEventListener("fetch", (event) => {
-    const { request } = event;
-  if (request.url.startsWith(END_POINT)) {
+  const { request } = event;
+  console.log(request);
+  if (request.url.startsWith(SERVER_END_POINT)) {
     event.respondWith(
       fetch(request)
-        .then((response) => {
-          // Check if the response is valid (status code in the range 200-299)
-          if (!response.ok) {
-            throw new Error("API request failed");
-          }
-          // Cache and return the response
-          return caches.open(CACHE_NAME).then((cache) => {
+        .then(async (response) => {
+          await handleErrors(response);
+          console.log("Success");
+          if (request.method === 'GET') {
+            const cache = await caches.open(CACHE_NAME);
             cache.put(request, response.clone());
-            return response;
-          });
+          }
+          postMessageToClient(response.status);
+          return response;
         })
-        .catch(() => {
-          // Handle API request failure
-          return new Response("API request failed", { status: 500 });
+        .catch((error) => {
+          postMessageToClient(error.message);
+          return new Response(`API request failed : ${error.message}`);
         })
     );
   } else {
@@ -63,3 +61,19 @@ self.addEventListener("activate", (event) => {
     )
   );
 });
+
+const handleErrors = async (response) => {
+  if(!response.ok){
+    const responseData = await response.json();
+    console.log(responseData);
+    throw new Error(response.status);
+  }
+}
+
+const postMessageToClient = (response) => {
+  self.clients.matchAll().then((clients) => {
+    clients.forEach((client) => {
+      client.postMessage(response);
+    });
+  });
+}

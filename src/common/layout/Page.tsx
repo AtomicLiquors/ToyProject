@@ -4,9 +4,14 @@ import { navbarRemHeight } from "@/styles/layout-measurements";
 
 import React from 'react';
 
-const Page:React.FC<{children: React.ReactNode}> = ({children}) => {
+interface PageProps {
+   $center?: boolean;
+   children: React.ReactNode;
+}
+
+const Page:React.FC<PageProps> = ({$center=false, children}) => {
   return (
-    <S.Container $spacing={navbarRemHeight} $column>
+    <S.Container $spacing={navbarRemHeight} $center={$center} $column>
       {children}
     </S.Container>
   )
@@ -19,6 +24,7 @@ const S = {
     background: white;
     height: calc(100% - ${(props) => props.$spacing}rem);
     position: absolute;
+    overflow-y: scroll;
   `,
 }
 export default Page

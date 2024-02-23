@@ -3,6 +3,7 @@ import {outlinedIcons} from '@/styles/images'
 import { profileColorGenerator } from '@/util/helpers/colorGenerator';
 import styled from "styled-components";
 import { clearDefault } from '@/styles/clear-default';
+
 interface ImgProps {
     size?: number;
     username?: string;

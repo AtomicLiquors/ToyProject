@@ -7,12 +7,13 @@ import Button, { ButtonThemeOption } from "@/common/gadgets/Button";
 import Gallery from "@/common/Gallery";
 import { Link } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
+import Page from "@/common/layout/Page";
 
 const Profile: React.FC = () => {
   const { isOpen, close } = modalManager();
 
   return (
-    <S.Container $column $center>
+    <Page $center>
       <Modal isOpen={isOpen} close={close} />
       <Flex $center style={{height: '3rem'}}><b>jacob West</b></Flex>
       <S.ProfileContianer $column>
@@ -42,18 +43,11 @@ const Profile: React.FC = () => {
       <div style={{overflow: 'scroll'}}>
         <Gallery/>
       </div>
-    </S.Container>
+    </Page>
   );
 };
 
 const S = {
-  Container: styled(Flex)`
-    position: absolute;
-    background: white;
-    height: 100%;
-    width: 100%;
-  `,
-
   ProfileContianer: styled(Flex)`
     box-sizing: border-box; 
     padding: 1em;

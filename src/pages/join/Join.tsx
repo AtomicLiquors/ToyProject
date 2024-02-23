@@ -11,6 +11,8 @@ const Join: React.FC = () => {
   const navigate = useNavigate();
   const { isOpen, open, close } = modalManager();
 
+  //To-Do: Page Component로 wrapping.
+
   return (
     <S.Container $column $center >
 

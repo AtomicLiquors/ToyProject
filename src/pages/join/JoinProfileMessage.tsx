@@ -30,7 +30,7 @@ const JoinProfileMessage: React.FC = () => {
         <p>프로필 메시지를 작성해 보세요! (선택)</p>
       </Flex>
 
-      <LabeledInput stretch label={'프로필 메시지'} textAreaHeight={20}/>
+      <LabeledInput id="profile_message" stretch label={'프로필 메시지'} textarea height={20}/>
       
       <Button onClick={() => navigate(Paths.FEED)}text={"시작하기"} stretch />
     </S.Container>

@@ -1,35 +1,35 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-/* 아래 코드 해석이 되나? */
+const baseURL = "http://localhost:8080/api/";
 
-const snsURL = "http://localhost:8080/api/";
-const sampleUser = "oauth_id_1";
 
 export const getPosts = async () => {
-  const { data } = await axios.get(snsURL + "posts/search?keyword=2kooong2");
-  console.log("success");
-  console.log(data);
+  const { data } = await axios.get(baseURL + "posts/search?keyword=2kooong2");
+  //const { data } = await postRequest("posts/search?keyword=2kooong2");
   return data;
 };
+const config = {
+  headers: {
+    'Content-Type': 'multipart/form-data'
+  },
+};
 
-export const post = async () => {
-  axios
-    .post(snsURL + "posts/", {
-      userId: sampleUser,
-      content: "sample content",
-      images: null,
-    })
+export const post = async (content: string, files: FileList): Promise<AxiosResponse | AxiosError> => {
+  const formData = new FormData();
+  formData.append("userId", "1");
+  formData.append("content", content);
+  for (const file of files) {
+    formData.append("images", file);
+  }
+
+  const response = await axios
+    .post(baseURL + "posts", formData, config)
     .then((response: AxiosResponse) => {
-      console.log("POST success");
-      console.log(response.data);
+      return response;
     })
     .catch((error: AxiosError) => {
-        if (error.response) {
-            console.error('Server responded with status:', error.response.status);
-        } else if (error.request) {
-            console.error('No response received from server');
-        } else {
-            console.error('Error setting up the request:', error.message);
-        }
+      return error;
     });
+  
+    return response;
 };

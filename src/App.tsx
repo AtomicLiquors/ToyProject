@@ -16,7 +16,7 @@ const App: React.FC = () => {
     /* location.pathname==="/postwrite"?location.pathname:null */
 
     <S.AppContainer>
-      <S.ScreenContainer $column>
+      <S.ScreenContainer id="screen" $column>
         <TransitionGroup className="transition-group">
           <CSSTransition
             key={location.pathname}

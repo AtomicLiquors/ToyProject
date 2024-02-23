@@ -53,7 +53,7 @@ const TagInput = () => {
   };
 
   return (
-    <>
+    <S.Container>
       <S.Wrap $alignCenter $backgroundColor={Palette.GRAY}>
         <S.Input ref={inputRef} onKeyDown={(e) => handleKeyPress(e)} />
       </S.Wrap>
@@ -69,11 +69,15 @@ const TagInput = () => {
           );
         })}
       </S.Tags>
-    </>
+    </S.Container>
   );
 };
 
 const S = {
+  Container: styled.div`
+    width: 100%;
+    box-sizing: border-box;
+  `,
   Tags: styled(Flex)`
     width: 100%;
     flex-wrap: wrap;
@@ -81,6 +85,7 @@ const S = {
   `,
   Wrap: styled(Flex)<{ $backgroundColor: string }>`
     border-radius: 1rem;
+    box-sizing: border-box;
     padding: 0.4rem;
     width: 100%;
     background: ${(props) => props.$backgroundColor};
@@ -96,7 +101,6 @@ const S = {
   Input: styled.input`
     ${clearDefault.input}
     width: 100%;
-    box-sizing: border-box;
   `,
 };
 export default TagInput;

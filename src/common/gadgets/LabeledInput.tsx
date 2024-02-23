@@ -1,12 +1,15 @@
-import React from "react";
+import { forwardRef, RefObject} from "react";
 import styled from "styled-components";
 import { clearDefault } from "@/styles/clear-default";
 import Label from "@/common/gadgets/Label";
 
+type HTMLInputTextAreaElement = HTMLInputElement | HTMLTextAreaElement;
+
 interface InputProps {
+  id: string;
   placeholder?: string;
   label?: string;
-  textAreaHeight?: number;
+  textarea?: boolean;
   stretch?: boolean;
   height?: number;
   rounded?: boolean;
@@ -14,35 +17,36 @@ interface InputProps {
 
 interface InputStyleProps {
   $stretch?: boolean;
-  $textAreaHeight?: number;
   $height?: number;
+  $textarea?: boolean;
   $rounded?: boolean;
 }
 
-const LabeledInput: React.FC<InputProps> = ({
+const LabeledInput = forwardRef<HTMLInputTextAreaElement, InputProps>(({
+  id,
   placeholder,
   stretch,
   label,
   height,
-  textAreaHeight,
+  textarea,
   rounded
-}) => {
+}, ref) => {
   return (
-    <S.InputContainer $stretch={stretch} $height={height} $textAreaHeight={textAreaHeight} $rounded={rounded}>
-      {textAreaHeight ? (
-        <>
-          {label ? <Label text={label}/> : <></>}
-          <S.TextArea placeholder={placeholder} />
-        </>
+    <S.InputContainer $stretch={stretch} $height={height} $textarea={textarea} $rounded={rounded}>
+      {textarea ? (
+        <div style={{height: "100%"}}>
+          {label && <Label text={label}/>}
+          <S.TextArea $textarea={textarea} ref={ref as RefObject<HTMLTextAreaElement>} placeholder={placeholder} />
+        </div>
       ) : (
         <S.GridLayout>          
-          {label ? <Label text={label}/> : <></>}
-          <S.Input placeholder={placeholder} />
+          {label && <Label text={label}/>}
+          <S.Input id={id} ref={ref as RefObject<HTMLInputElement>} placeholder={placeholder} />
         </S.GridLayout>
       )}
     </S.InputContainer>
   );
-};
+});
 
 const S = {
   GridLayout: styled.div`
@@ -52,13 +56,13 @@ const S = {
   `,
   InputContainer: styled.div<InputStyleProps>`
     width: ${(props) => (props.$stretch ? "100%" : "auto")};
-    ${(props) => (props.$textAreaHeight ? "min-height:" + props.$textAreaHeight + "rem" : "")};
+    ${(props) => (props.$textarea ? "min-height:" + props.$height + "rem" : "")};
     height: ${(props) => (props.$height ? props.$height + "rem" : "auto")};
   `,
 
   TextArea: styled.textarea<InputStyleProps>`
     width: 100%;
-    ${(props) => (props.$textAreaHeight ? "height: 100%" : "")};
+    ${(props) => (props.$textarea ? "height: 100%" : "")};
     border-radius: 5px;
     appearance: none;
     -webkit-appearance: none;
