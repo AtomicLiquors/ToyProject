@@ -93,11 +93,11 @@ const S = {
   `,
 
   Form: styled(Flex)`
+    box-sizing: border-box;
     max-width: 256px;
     height: 100%;
     width: 100%;
     gap: 3rem;
-    
   `,
 };
 export default NewPost;

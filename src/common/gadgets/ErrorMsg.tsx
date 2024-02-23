@@ -35,6 +35,7 @@ const S = {
         width: 100%;
         margin: 0;
         padding: 0.5em;
+        box-sizing: border-box;
         border-radius: 5px;
         border: ${(props) => ($themes[props.$theme].border)};
         background: ${(props) => ($themes[props.$theme].background)};
