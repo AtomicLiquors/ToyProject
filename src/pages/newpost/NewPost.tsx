@@ -97,6 +97,7 @@ const S = {
     height: 100%;
     width: 100%;
     gap: 3rem;
+    
   `,
 };
 export default NewPost;

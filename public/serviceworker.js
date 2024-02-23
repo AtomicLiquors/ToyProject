@@ -21,9 +21,7 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       fetch(request)
         .then(async (response) => {
-          // Check if the response is valid 
           await handleErrors(response);
-          // Cache and return the response
           console.log("Success");
           if (request.method === 'GET') {
             const cache = await caches.open(CACHE_NAME);
