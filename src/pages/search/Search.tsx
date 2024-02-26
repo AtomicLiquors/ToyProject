@@ -4,6 +4,12 @@ import { clearDefault } from "@/styles/clear-default";
 import { Flex } from "@/styles/container";
 import { outlinedIcons } from "@/styles/images";
 import Page from "@/common/layout/Page";
+import { getPosts } from "@/api/post";
+
+
+const data = await getPosts('test');
+console.log(data);
+
 
 const Search = () => {
   return (
