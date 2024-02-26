@@ -5,19 +5,54 @@ import { Flex } from "@/styles/container";
 import { outlinedIcons } from "@/styles/images";
 import Page from "@/common/layout/Page";
 import { getPosts } from "@/api/post";
-
-
-const data = await getPosts('test');
-console.log(data);
-
+import { useRef, useState } from "react";
 
 const Search = () => {
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  const [searchData, setSearchData] = useState<Array<PostType>>([]);
+
+  const search = async (keyword: string) => {
+    const response = await getPosts(keyword);
+    console.log(response);
+    setSearchData(response.data);
+  };
+
+  const handleSearchButtonClick = () => {
+    const keyword = searchRef.current!.value.trim();
+    if (keyword === "") return;
+    search(searchRef.current!.value);
+  };
+
+  const handleSearchInputKeyPress = (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      search(searchRef.current!.value);
+    }
+  };
+
   return (
     <Page>
+      {searchData[0] ? (
+        <Flex>
+          {searchData.map((post, index) => (
+            <div key={index}>{post.id + ""}</div>
+          ))}
+        </Flex>
+      ) : (
+        <></>
+      )}
+
       <S.InputTab>
         <S.InputContainer $center>
-          <Flex $center style={{width: "3rem", paddingRight: "1rem"}}><img src={outlinedIcons.search}/></Flex>
-          <S.SearchInput />
+          <Flex $center style={{ width: "3rem", paddingRight: "1rem" }}>
+            <img onClick={handleSearchButtonClick} src={outlinedIcons.search} />
+          </Flex>
+          <S.SearchInput
+            onKeyDown={handleSearchInputKeyPress}
+            ref={searchRef}
+          />
         </S.InputContainer>
       </S.InputTab>
       <Gallery />
