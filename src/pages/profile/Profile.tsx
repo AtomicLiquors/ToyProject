@@ -10,6 +10,7 @@ import Paths from "@/util/consts/Paths";
 import Page from "@/common/layout/Page";
 
 const Profile: React.FC = () => {
+  const emptyMsg = "등록된 게시글이 없습니다.";
   const { isOpen, close } = modalManager();
 
   return (
@@ -41,7 +42,7 @@ const Profile: React.FC = () => {
         </S.ProfileMessages>
       </S.ProfileContianer>
       <div style={{overflow: 'scroll'}}>
-        <Gallery/>
+        <Gallery posts={[]} emptyMsg={emptyMsg}/>
       </div>
     </Page>
   );

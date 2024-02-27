@@ -9,7 +9,8 @@ const input: string =
   "background-color: transparent;" +  /* Remove default background color */
   "color: inherit;" +  /* Inherit text color */
   "font-family: inherit;" +  /* Inherit font family */
-  "font-size: inherit;" /* Inherit font size */
+  "font-size: inherit;"+ /* Inherit font size */
+  "cursor: text;"
 
 const image: string = 
     "user-drag: none;" +
