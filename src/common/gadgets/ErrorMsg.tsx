@@ -33,6 +33,7 @@ const $themes = {
 const S = {
     ErrorMsg: styled.div<{$theme: ErrorMsgThemeOption}>`
         width: 100%;
+        text-align: center;
         margin: 0;
         padding: 0.5em;
         box-sizing: border-box;

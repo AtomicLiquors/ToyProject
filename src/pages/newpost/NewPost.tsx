@@ -8,10 +8,7 @@ import { post } from "@/api/post";
 import { useRef, useState, useEffect } from "react";
 import ErrorMsg from "@/common/gadgets/ErrorMsg";
 import ImageUploadPanel from "@/common/gadgets/ImageUploadPanel/ImageUploadPanel";
-import { isStatusCodeOk } from "@/util/helpers/checkStatusCodeOk";
 import Page from "@/common/layout/Page";
-
-const sw = navigator.serviceWorker;
 
 const NewPost = () => {
   const [isFetching, setIsFetching] = useState(false);
@@ -20,14 +17,15 @@ const NewPost = () => {
   const contentRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
   useEffect(() => {
+    const sw = navigator.serviceWorker;
+    
     if (sw) {
       sw.addEventListener("message", (event) => {
         if (event.source && event.data) {
           setIsFetching(false);
-          if (isStatusCodeOk(event.data)) {
-            setPostResponse("등록되었습니다.");
-          } else {
-            setPostResponse(event.data + " : 등록 중 에러가 발생했습니다.");
+          console.log(event.data);
+          if(!event.data.ok){
+            setPostResponse(event.data);
           }
         }
       });

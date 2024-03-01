@@ -3,11 +3,15 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 const baseURL = "http://localhost:8080/api/";
 
 
-export const getPosts = async () => {
-  const { data } = await axios.get(baseURL + "posts/search?keyword=2kooong2");
-  //const { data } = await postRequest("posts/search?keyword=2kooong2");
+export const getPosts = async (keyword: string) => {
+  const { data } = await axios.get(baseURL + "posts/search", {
+    params:{
+        keyword: keyword,
+    }
+});
   return data;
 };
+
 const config = {
   headers: {
     'Content-Type': 'multipart/form-data'
