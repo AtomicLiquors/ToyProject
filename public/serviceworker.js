@@ -16,22 +16,20 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const { request } = event;
-  console.log(request);
   if (request.url.startsWith(SERVER_END_POINT)) {
     event.respondWith(
       fetch(request)
         .then(async (response) => {
           await handleErrors(response);
-          console.log("Success");
           if (request.method === 'GET') {
             const cache = await caches.open(CACHE_NAME);
             cache.put(request, response.clone());
           }
-          postMessageToClient(response.status);
+          postMessageToClient(response);
           return response;
         })
         .catch((error) => {
-          postMessageToClient(error.message);
+          postMessageToClient(error);
           return new Response(`API request failed : ${error.message}`);
         })
     );
@@ -65,7 +63,6 @@ self.addEventListener("activate", (event) => {
 const handleErrors = async (response) => {
   if(!response.ok){
     const responseData = await response.json();
-    console.log(responseData);
     throw new Error(response.status);
   }
 }
