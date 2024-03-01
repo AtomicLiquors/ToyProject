@@ -5,9 +5,7 @@ interface GalleryProps {
   posts: PostType[];
   emptyMsg: string;
 }
-{
-  /*<S.GridItem src={'http://via.placeholder.com/200/200/'} draggable="false"/>*/
-}
+
 const Gallery: React.FC<GalleryProps> = ({ posts, emptyMsg }) => {
   return (
     <>
@@ -16,7 +14,7 @@ const Gallery: React.FC<GalleryProps> = ({ posts, emptyMsg }) => {
           {posts.map((post, key) => (
             <S.GridItem
               key={key}
-              src={post.images[0].imagePath}
+              src={import.meta.env.VITE_S3_PATH + post.images[0].imagePath}
               draggable="false"
             />
           ))}

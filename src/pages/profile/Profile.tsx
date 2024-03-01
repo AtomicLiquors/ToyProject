@@ -8,10 +8,26 @@ import Gallery from "@/common/Gallery";
 import { Link } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
 import Page from "@/common/layout/Page";
+import { useEffect, useState } from "react";
 
 const Profile: React.FC = () => {
   const emptyMsg = "등록된 게시글이 없습니다.";
   const { isOpen, close } = modalManager();
+  // const [postData, setPostData] = useState<Array<PostType>>([]);
+  const [isFetching, setIsFetching] = useState(false);
+
+  useEffect(() => {
+    const sw = navigator.serviceWorker;
+
+    if (sw) {
+      sw.addEventListener("message", (event) => {
+        if (event.source && event.data) {
+          setIsFetching(false);
+          console.log(event.data);
+        }
+      });
+    }
+  }, []);
 
   return (
     <Page $center>
@@ -41,6 +57,7 @@ const Profile: React.FC = () => {
           </Link>
         </S.ProfileMessages>
       </S.ProfileContianer>
+      { isFetching ? <div>{isFetching}</div> : <></>}
       <div style={{overflow: 'scroll'}}>
         <Gallery posts={[]} emptyMsg={emptyMsg}/>
       </div>

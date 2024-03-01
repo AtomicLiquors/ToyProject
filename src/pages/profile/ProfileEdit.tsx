@@ -12,7 +12,7 @@ const ProfileEdit = () => {
     <Page>
       <PageHeader />
       <PageBody>
-        <Flex $column $center style={{height: '100%', gap: '3rem'}}>
+        <Flex $column $center style={{ height: "100%", gap: "3rem" }}>
           <div>
             <ProfileImg size={6} />
             <div style={{ color: Palette.BLUE }}>
@@ -20,9 +20,9 @@ const ProfileEdit = () => {
             </div>
           </div>
           <Flex $column $center style={{ gap: "1.6rem" }}>
-          <LabeledInput id="nickname" stretch label={"닉네임"} />
-          <LabeledInput id="birthday" stretch label={"생년월일"} />
-          <LabeledInput id="gender" stretch label={"성별"} />
+            <LabeledInput id="nickname" stretch label={"닉네임"} />
+            <LabeledInput id="birthday" stretch label={"생년월일"} />
+            <LabeledInput id="gender" stretch label={"성별"} />
           </Flex>
         </Flex>
       </PageBody>
