@@ -8,6 +8,7 @@ import { Palette } from "@/styles/palette";
 //import styled from "styled-components";
 
 const ProfileEdit = () => {
+
   return (
     <Page>
       <PageHeader />

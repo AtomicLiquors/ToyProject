@@ -5,16 +5,19 @@ import ProfileImg from "@/common/ProfileImg";
 import modalManager from "@/manager/ModalManager.ts";
 import Button, { ButtonThemeOption } from "@/common/gadgets/Button";
 import Gallery from "@/common/Gallery";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
 import Page from "@/common/layout/Page";
 import { useEffect, useState } from "react";
+import { getMyPosts, getPostsById } from "@/api/post";
 
 const Profile: React.FC = () => {
   const emptyMsg = "등록된 게시글이 없습니다.";
   const { isOpen, close } = modalManager();
   // const [postData, setPostData] = useState<Array<PostType>>([]);
   const [isFetching, setIsFetching] = useState(false);
+  
+  const location = useLocation();
 
   useEffect(() => {
     const sw = navigator.serviceWorker;
@@ -26,6 +29,20 @@ const Profile: React.FC = () => {
           console.log(event.data);
         }
       });
+    }
+
+    const navState: ProfileNavigateType = location.state;
+    const mine = navState.mine;
+    if(mine){
+      ( async () => {
+        const { data } = await getMyPosts();
+        console.log(data);
+      })();
+    }else{
+      ( async () => {
+        const { data } = await getPostsById(navState.id);
+        console.log(data);
+      })();
     }
   }, []);
 

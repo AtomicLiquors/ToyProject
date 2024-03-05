@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { outlinedIcons } from "@/styles/images";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
 import { navbarRemHeight } from "@/styles/layout-measurements";
 import { Flex } from "@/styles/container";
@@ -9,6 +9,12 @@ import ProfileImg from "@/common/ProfileImg";
 const $itemSize = 2;
 
 const Navbar: React.FC = () => {
+
+  const navigate = useNavigate();
+
+  // const navigateToMyProfile = () => navigate(Paths.PROFILE, {state: {mine: true}});
+  const navigateToMyProfile = () => navigate(Paths.PROFILE, {state: {mine: false, id: 1}});
+
   return (
     <S.Container $alignCenter $spaceAround style={{ height: `${navbarRemHeight}rem` }}>
       <div></div>
@@ -24,9 +30,10 @@ const Navbar: React.FC = () => {
       <Link to={Paths.NOTIFICATIONS}>
         <S.Icon src={outlinedIcons.bell} />
       </Link>
-      <Link to={Paths.PROFILE}>
+      <div onClick={navigateToMyProfile} style={{cursor: 'pointer'}}>
         <ProfileImg size={$itemSize} username={'2kooong2'}/>
-      </Link>
+      </div>
+      
       <div></div>
     </S.Container>
   );
