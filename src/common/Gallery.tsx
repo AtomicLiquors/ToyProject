@@ -1,4 +1,5 @@
 import { Flex } from "@/styles/container";
+import { forwardRef } from "react";
 import styled from "styled-components";
 
 interface GalleryProps {
@@ -6,11 +7,11 @@ interface GalleryProps {
   emptyMsg: string;
 }
 
-const Gallery: React.FC<GalleryProps> = ({ posts, emptyMsg }) => {
+const Gallery = forwardRef<HTMLDivElement, GalleryProps>(({ posts, emptyMsg }, ref) => {
   return (
-    <>
+    <div style={{overflow: 'scroll'}}>
       {posts[0] ? (
-        <S.GalleryGrid>
+        <S.GalleryGrid ref={ref}>
           {posts.map((post, key) => (
             <S.GridItem
               key={key}
@@ -24,9 +25,9 @@ const Gallery: React.FC<GalleryProps> = ({ posts, emptyMsg }) => {
           <div>{emptyMsg}</div>
         </S.EmptyResult>
       )}
-    </>
+    </div>
   );
-};
+});
 
 const S = {
   GalleryGrid: styled.div`

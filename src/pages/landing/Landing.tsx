@@ -28,7 +28,7 @@ const Landing = () => {
         </p>
       </Flex>
       
-      <Button onClick={open} text={"SNS 계정으로 로그인"} stretch />
+      <Button onClick={open} text={"SNS 계정으로 로그인"} widthRatio={60}/>
       <hr />
       <Flex $column $center>
         <p>계정이 없으신가요?</p>

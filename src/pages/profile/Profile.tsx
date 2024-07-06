@@ -19,6 +19,9 @@ const Profile: React.FC = () => {
   
   const location = useLocation();
 
+  //const io = new IntersectionObserver(()=>{}, {threshold: 0.7});
+ // io.observe();
+
   useEffect(() => {
     const sw = navigator.serviceWorker;
 
@@ -75,9 +78,7 @@ const Profile: React.FC = () => {
         </S.ProfileMessages>
       </S.ProfileContianer>
       { isFetching ? <div>{isFetching}</div> : <></>}
-      <div style={{overflow: 'scroll'}}>
         <Gallery posts={[]} emptyMsg={emptyMsg}/>
-      </div>
     </Page>
   );
 };

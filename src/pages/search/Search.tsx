@@ -11,22 +11,29 @@ import ErrorMsg from "@/common/gadgets/ErrorMsg";
 const Search = () => {
   const emptyMsg = "조회 결과가 없습니다.";
   const searchRef = useRef<HTMLInputElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   const [searchData, setSearchData] = useState<Array<PostType>>([]);
   const [isFetching, setIsFetching] = useState(false);
   const [searchResponse, setSearchResponse] = useState("");
-  //To-Do : 검색 데이터 유지
+  //To-Do : 페이지 이동 간 검색 데이터 유지
+  const observer = new IntersectionObserver(()=>{console.log("observed")}, {threshold: 0.7});
 
   useEffect(() => {
+    alert('ngm');
+    if(galleryRef.current){
+      observer.observe(galleryRef.current);
+    }
+  }, [searchData])
+
+  useEffect(() => {
+
     const sw = navigator.serviceWorker;
 
     if (sw) {
       sw.addEventListener("message", (event) => {
         if (event.source && event.data) {
-          console.log(event.data);
-          if(!event.data.data){
-            setSearchResponse(event.data.message);
-          }
+          setSearchResponse(!event.data.data ? event.data.message : "");
         }
       });
     }
@@ -37,8 +44,7 @@ const Search = () => {
     setIsFetching(true);
     const response = await getPosts(keyword);
     setIsFetching(false);
-    if(response.data)
-      setSearchData(response.data);
+    if (response.data) setSearchData(response.data);
   };
 
   const handleSearchButtonClick = () => {
@@ -81,7 +87,7 @@ const Search = () => {
       ) : (
         <ErrorMsg text={"오류가 발생했습니다 : " + searchResponse}></ErrorMsg>
       )}
-      <Gallery posts={searchData} emptyMsg={emptyMsg}/>
+      <Gallery posts={searchData} emptyMsg={emptyMsg} ref={galleryRef}/>
     </Page>
   );
 };

@@ -24,7 +24,7 @@ const Join: React.FC = () => {
       </Flex>
       
       <Button onClick={open} text={"SNS 계정으로 회원가입"} stretch />
-      <Button onClick={() => navigate(Paths.JOININFO)}text={"인증완료"} stretch />
+      <Button onClick={() => navigate(Paths.JOININFO)} text={"인증완료"} stretch />
     </S.Container>
   );
 };
