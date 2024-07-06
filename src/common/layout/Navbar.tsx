@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { outlinedIcons } from "@/styles/images";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Paths from "@/util/consts/Paths";
 import { navbarRemHeight } from "@/styles/layout-measurements";
 import { Flex } from "@/styles/container";
@@ -9,6 +9,11 @@ import ProfileImg from "@/common/ProfileImg";
 const $itemSize = 2;
 
 const Navbar: React.FC = () => {
+
+
+  const location = useLocation();
+  if(location.pathname === "/")
+    return;
 
   // const navigateToMyProfile = () => navigate(Paths.PROFILE, {state: {mine: true}});
   // const navigateToMyProfile = () => navigate(Paths.PROFILE, {state: {mine: false, id: 1}});
